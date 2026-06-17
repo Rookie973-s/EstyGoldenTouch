@@ -1,0 +1,3243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EstyGolden Salon & Beauty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Anton&display=swap" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Anton&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.379.0/dist/umd/lucide.min.js"
+        onerror="this.onerror=null;var s=document.createElement('script');s.src='https://unpkg.com/lucide@0.379.0/dist/umd/lucide.min.js';document.head.appendChild(s);"></script>
+  <style>
+    /* ── Variables ── */
+    :root {
+      --aqua: #4A6361;
+      --aqua-deep: #1E2B29;
+      --aqua-mid: #5E7E7C;
+      --peach: #FFD2C2;
+      --peach-dark: #E8A98F;
+      --cream: #FFF8F4;
+      --dark: #16201F;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--aqua); border-radius: 3px; }
+
+    /* ── Animations ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(8px); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+
+    /* Animated Hair Icon CSS */
+    .animated-hair {
+      display: block;
+      overflow: visible;
+    }
+    .strand {
+      transform-origin: 50% 0%;
+      animation: sway 2s ease-in-out infinite alternate;
+    }
+    @keyframes sway {
+      0% { transform: rotate(-6deg); }
+      100% { transform: rotate(6deg); }
+    }
+
+    .animate-fade-in-up  { animation: fadeInUp  0.8s ease forwards; }
+    .animate-fade-in     { animation: fadeIn    1.0s ease forwards; }
+    .animate-scroll-bounce { animation: scrollBounce 1.5s ease-in-out infinite; }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+
+    /* ── Shared utilities ── */
+    .golden-text {
+      background: linear-gradient(135deg, #FFD2C2 0%, #E8A98F 40%, #FFD2C2 60%, #E8A98F 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s linear infinite;
+    }
+
+    .golden-divider {
+      height: 2px;
+      background: linear-gradient(to right, transparent, #FFD2C2, transparent);
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #FFD2C2;
+      padding: 6px 18px;
+      border: 1px solid rgba(255,210,194,0.4);
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .bg-section { background: linear-gradient(135deg, #16201F 0%, #243634 50%, #16201F 100%); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #FFD2C2, #E8A98F);
+      color: #4A6361;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(255,210,194,0.4);
+    }
+    .btn-primary:active { transform: translateY(0) scale(0.98); }
+    .btn-primary:focus-visible {
+      outline: 2px solid #FFD2C2;
+      outline-offset: 3px;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: #FFD2C2;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 50px;
+      border: 1.5px solid #FFD2C2;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      background: #FFD2C2;
+      color: #4A6361;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(255,210,194,0.25);
+    }
+    .btn-outline:active { transform: translateY(0) scale(0.98); }
+    .btn-outline:focus-visible {
+      outline: 2px solid #FFD2C2;
+      outline-offset: 3px;
+    }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      transition: background 0.5s ease, box-shadow 0.5s ease;
+    }
+    #navbar.scrolled {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(74,99,97,0.85);
+      border-bottom: 1px solid rgba(255,210,194,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .navbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .logo-circle {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FFD2C2, #E8A98F);
+      border: 2px solid rgba(255,210,194,0.5);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-name {
+     font-family: 'Sora', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .logo-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,210,194,0.6);
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+      padding: 6px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,210,194,0.1);
+      backdrop-filter: blur(6px);
+    }
+    .nav-link {
+      position: relative;
+      color: rgba(255,248,244,0.85);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: #FFD2C2;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: #FFD2C2; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: #FFD2C2; }
+    .nav-link.active::after { width: 100%; }
+
+    /* ── Desktop nav-links: pill style ── */
+    .nav-links .nav-link {
+      padding: 0.6rem 1.25rem;
+      border-radius: 50px;
+      transition: color 0.3s ease, background 0.35s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .nav-links .nav-link::after { display: none; }
+    .nav-links .nav-link:hover {
+      color: var(--cream);
+      background: rgba(255,210,194,0.12);
+      transform: translateY(-1px);
+    }
+    .nav-links .nav-link:hover::after { width: 0; }
+    .nav-links .nav-link.active {
+      color: var(--aqua-deep);
+      background: linear-gradient(135deg, #FFD2C2, #E8A98F);
+      box-shadow: 0 6px 18px rgba(255,210,194,0.35);
+      transform: translateY(0);
+    }
+    .nav-links .nav-link:focus-visible {
+      outline: 2px solid #FFD2C2;
+      outline-offset: 2px;
+    }
+
+    .navbar-cta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-book-btn {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 0.85rem;
+      line-height: 1;
+    }
+
+    .nav-book-btn svg, 
+    .nav-book-btn i {
+      width: 18px !important;
+      height: 18px !important;
+      flex-shrink: 0;
+      stroke-width: 2.5;
+    }
+
+    .navbar-phone {
+      color: rgba(255,210,194,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.5rem 0.9rem;
+      border-radius: 50px;
+      transition: color 0.3s ease, background 0.3s ease;
+    }
+    .navbar-phone:hover { color: #FFD2C2; background: rgba(255,210,194,0.08); }
+    .navbar-phone svg { width: 16px; height: 16px; }
+
+    /* Hide mobile menu on desktop */
+    #mobile-menu { display: none; }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding-top: 86px;
+    }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(22,32,31,0.95) 0%, rgba(30,43,41,0.55) 45%, rgba(255,210,194,0.12) 100%);
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+      display: flex; flex-direction: column;
+      gap: 1.75rem;
+      min-height: calc(100vh - 86px);
+      justify-content: space-between;
+    }
+
+    .hero-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .hero-chip {
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,248,244,0.35);
+      color: var(--cream);
+      background: rgba(22,32,31,0.35);
+      backdrop-filter: blur(6px);
+    }
+    .hero-chip.active {
+      background: var(--peach);
+      color: var(--aqua-deep);
+      border-color: var(--peach);
+    }
+
+    .hero-promo {
+      flex-shrink: 0;
+      text-align: right;
+      background: rgba(22,32,31,0.45);
+      border: 1px solid rgba(255,210,194,0.3);
+      border-radius: 16px;
+      padding: 0.85rem 1.25rem;
+      backdrop-filter: blur(8px);
+      max-width: 220px;
+    }
+    .hero-promo-value {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.6rem;
+      color: var(--peach);
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .hero-promo-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,248,244,0.75);
+      margin-top: 4px;
+    }
+
+    .hero-display { position: relative; }
+    .hero-display-pre {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: clamp(2.3rem, 3vw, 3.2rem);
+      color: var(--cream);
+      margin-bottom: -0.2em;
+    }
+    .hero-display-main {
+      font-family: 'Anton', sans-serif;
+      font-weight: 400;
+      font-size: clamp(5.5rem, 19vw, 15rem);
+      line-height: 0.85;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #FFD2C2 0%, #E8A98F 40%, #FFD2C2 60%, #E8A98F 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s linear infinite;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      color: rgba(255,248,244,0.88);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .hero-rating { display: flex; align-items: center; gap: 1rem; }
+    .hero-avatars { display: flex; }
+    .hero-avatars img {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--dark);
+      margin-left: -12px;
+    }
+    .hero-avatars img:first-child { margin-left: 0; }
+    .hero-rating-text { font-size: 0.85rem; color: rgba(255,248,244,0.85); line-height: 1.4; }
+    .hero-rating-text strong { color: var(--peach); font-family: 'Playfair Display', serif; font-size: 1.05rem; }
+
+    .scroll-cue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,210,194,0.8);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .scroll-cue-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(255,210,194,0.5);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .scroll-cue-ring svg { width: 16px; height: 16px; }
+
+    /* ── Page Views ── */
+    .page-view { display: none; }
+    .page-view.active { display: block; animation: fadeIn 0.6s ease; }
+
+    /* ── Wigs Lifestyle Carousel ── */
+    #lifestyle-wigs {
+      background: linear-gradient(135deg, #1E2B29, #16201F);
+      padding: 6rem 1.5rem;
+      overflow: hidden;
+    }
+    .lifestyle-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+    .lifestyle-text {
+      flex: 1;
+    }
+    .lifestyle-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+    .lifestyle-sub {
+      font-size: 1.1rem;
+      color: rgba(255,248,244,0.75);
+      line-height: 1.6;
+      max-width: 400px;
+    }
+    .lifestyle-visuals {
+      flex: 1.2;
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    }
+    .carousel-track {
+      display: flex;
+      gap: 1.5rem;
+      height: 200%;
+    }
+    .carousel-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      flex: 1;
+    }
+    .carousel-col img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      height: 320px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      border: 1.5px solid rgba(255,210,194,0.07);
+      transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+      display: block;
+    }
+    .carousel-col img:hover {
+      transform: scale(1.04) translateY(-5px);
+      border-color: rgba(255,210,194,0.38);
+      box-shadow:
+        0 18px 45px rgba(0,0,0,0.55),
+        0 0 24px rgba(255,210,194,0.18),
+        0 0 60px rgba(232,169,143,0.1);
+    }
+    .col-down { animation: scrollDown 28s linear infinite; }
+    .col-up   { animation: scrollUp   28s linear infinite; }
+    @keyframes scrollDown { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
+    @keyframes scrollUp   { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+
+    /* Pause carousel on hover over the whole visuals block */
+    .lifestyle-visuals:hover .col-down { animation-play-state: paused; }
+    .lifestyle-visuals:hover .col-up   { animation-play-state: paused; }
+
+    /* Ambient pulse glow behind visuals */
+    .lifestyle-visuals::before {
+      content: '';
+      position: absolute; inset: -30px;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,210,194,0.07) 0%, transparent 70%);
+      pointer-events: none; z-index: -1;
+      animation: ambientPulse 4s ease-in-out infinite;
+    }
+    @keyframes ambientPulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.05); }
+    }
+
+    /* ── Explore Tabs ── */
+    #explore { padding: 6rem 1.5rem; }
+    .explore-tabs {
+      display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem;
+    }
+    .explore-tab {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,248,244,0.7);
+      background: rgba(255,210,194,0.05); border: 1px solid rgba(255,210,194,0.25);
+      border-radius: 50px; padding: 12px 32px; cursor: pointer; transition: all 0.3s ease;
+    }
+    .explore-tab:hover { border-color: rgba(255,210,194,0.6); color: var(--peach); }
+    .explore-tab.active { background: linear-gradient(135deg, #FFD2C2, #E8A98F); color: var(--aqua-deep); border-color: transparent; }
+
+    /* ── Services ── */
+    #services { padding: 6rem 1.5rem; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700; color: #FFF8F4; margin-bottom: 1rem;
+    }
+    .section-sub { color: rgba(255,248,244,0.65); max-width: 550px; margin: 0 auto; line-height: 1.7; }
+
+    .services-grid {
+      max-width: 1280px; margin: 0 auto; display: grid;
+      grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+    .service-card {
+      position: relative; overflow: hidden; border-radius: 20px;
+      cursor: pointer; height: 420px;
+      transition: transform 0.45s cubic-bezier(0.175,0.885,0.32,1.275), box-shadow 0.45s ease;
+      border: 1px solid rgba(255,210,194,0);
+    }
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow:
+        0 28px 65px rgba(0,0,0,0.55),
+        0 0 0 1.5px rgba(255,210,194,0.45),
+        0 0 50px rgba(255,210,194,0.1);
+    }
+    .service-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease, filter 0.5s ease; filter: brightness(0.85) saturate(1.05); }
+    .service-card:hover img { transform: scale(1.1); filter: brightness(1) saturate(1.15); }
+    .service-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(74,99,97,0.96) 0%, rgba(74,99,97,0.28) 50%, transparent 100%);
+      transition: background 0.45s ease;
+    }
+    .service-card:hover .service-card-overlay {
+      background: linear-gradient(to top, rgba(74,99,97,0.99) 0%, rgba(74,99,97,0.55) 60%, rgba(74,99,97,0.08) 100%);
+    }
+    /* Shimmer sweep on service card hover */
+    .service-card::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.07) 50%, transparent 70%);
+      transform: translateX(-120%);
+      transition: transform 0s;
+    }
+    .service-card:hover::before {
+      transform: translateX(120%);
+      transition: transform 0.65s ease;
+    }
+    /* Glowing top bar on service card */
+    .service-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 4;
+      background: linear-gradient(90deg, transparent, #FFD2C2, #E8A98F, transparent);
+      opacity: 0; transform: scaleX(0); transform-origin: left;
+      transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .service-card:hover::after { opacity: 1; transform: scaleX(1); }
+    .service-tag {
+      position: absolute; top: 16px; right: 16px; background: rgba(255,210,194,0.2);
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,210,194,0.4);
+      color: #FFD2C2; font-size: 0.65rem; letter-spacing: 0.12em;
+      padding: 5px 12px; border-radius: 50px; font-weight: 700; text-transform: uppercase;
+      z-index: 5;
+    }
+    .service-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; z-index: 4; }
+    .service-icon { color: #FFD2C2; font-size: 0.8rem; margin-bottom: 0.5rem; }
+    .service-icon svg { width: 16px; height: 16px; }
+    .service-title {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      color: #FFD2C2; margin-bottom: 0.5rem;
+    }
+    .service-desc { color: rgba(255,248,244,0.78); font-size: 0.82rem; line-height: 1.65; }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 1rem;
+      color: #FFD2C2; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+      border-bottom: 1px solid rgba(255,210,194,0.5); padding-bottom: 2px;
+      text-decoration: none; transition: border-color 0.3s, gap 0.3s;
+    }
+    .service-link:hover { border-color: #FFD2C2; gap: 10px; }
+
+    /* ── Braiding Styles ── */
+    #braiding { background: linear-gradient(135deg, #1E2B29, #4A6361); padding: 5rem 1.5rem; }
+    .braiding-inner {
+      max-width: 1152px; margin: 0 auto; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .braiding-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; color: #FFF8F4; line-height: 1.15; margin-bottom: 1.5rem;
+    }
+    .braiding-desc { color: rgba(255,248,244,0.68); line-height: 1.8; margin-bottom: 2rem; }
+    .braid-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .braid-tag {
+      padding: 8px 18px; border: 1px solid rgba(255,210,194,0.3); border-radius: 50px;
+      color: #FFD2C2; font-size: 0.8rem; font-weight: 500; background: rgba(255,210,194,0.06);
+      letter-spacing: 0.04em; transition: all 0.3s ease;
+    }
+    .braid-tag:hover { background: rgba(255,210,194,0.12); border-color: rgba(255,210,194,0.6); }
+    .braiding-image { margin-top: 2rem; border-radius: 16px; overflow: hidden; height: 220px; }
+    .braiding-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+    /* ══════════ GALLERY — Animated Magazine Style ══════════ */
+    #gallery { padding: 6rem 1.5rem; }
+    .gallery-grid {
+      max-width: 1280px; margin: 0 auto; display: grid;
+      grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 290px); gap: 14px;
+    }
+
+    /* Base item — invisible until JS triggers entrance */
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 20px;
+      position: relative;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(36px) scale(0.96);
+      transition:
+        opacity    0.55s ease,
+        transform  0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow 0.45s ease;
+      /* Animated gradient border — idle state */
+      outline: 1.5px solid rgba(255,210,194,0);
+    }
+
+    /* Entrance: stagger via inline transition-delay set in JS */
+    .gallery-item.gi-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Hover lift + glow ring */
+    .gallery-item:hover {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow:
+        0 30px 60px rgba(0,0,0,0.55),
+        0 0 0 1.5px rgba(255,210,194,0.55),
+        0 0 48px rgba(255,210,194,0.14);
+    }
+
+    /* Tall first item */
+    .gallery-item:first-child { grid-row: span 2; }
+
+    /* ── Image: Ken Burns + colour boost on hover ── */
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  filter 0.5s ease;
+      filter: brightness(0.88) saturate(1.05);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.06) saturate(1.22);
+    }
+
+    /* ── ::before  — shimmer sweep across image ── */
+    .gallery-item::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      background: linear-gradient(
+        110deg,
+        transparent 30%,
+        rgba(255,255,255,0.1) 50%,
+        transparent 70%
+      );
+      transform: translateX(-120%);
+      transition: transform 0s;
+    }
+    .gallery-item:hover::before {
+      transform: translateX(120%);
+      transition: transform 0.65s ease;
+    }
+
+    /* ── ::after  — gradient vignette ── */
+    .gallery-item::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(to top, rgba(22,32,31,0.95) 0%, rgba(22,32,31,0.25) 45%, transparent 72%),
+        linear-gradient(135deg, rgba(255,210,194,0.06) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* ── Glowing top accent bar ── */
+    .gi-glow-top {
+      position: absolute; top: 0; left: 0; right: 0; height: 2.5px;
+      background: linear-gradient(90deg, transparent 0%, #FFD2C2 40%, #E8A98F 60%, transparent 100%);
+      z-index: 5; opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .gallery-item:hover .gi-glow-top {
+      opacity: 1; transform: scaleX(1);
+    }
+
+    /* ── Floating item index badge ── */
+    .gi-index {
+      position: absolute; top: 14px; left: 14px; z-index: 6;
+      width: 28px; height: 28px;
+      background: rgba(22,32,31,0.75);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,210,194,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 800; color: #FFD2C2;
+      letter-spacing: 0.01em;
+      opacity: 0; transform: scale(0.7) rotate(-10deg);
+      transition: opacity 0.3s ease 0.05s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1) 0.05s;
+    }
+    .gallery-item:hover .gi-index {
+      opacity: 1; transform: scale(1) rotate(0deg);
+    }
+
+    /* ── Caption  — glass morphism, slides up ── */
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 4;
+      padding: 1.75rem 1.25rem 1.25rem;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      transform: translateY(110%);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(to top, rgba(22,32,31,0.97) 0%, rgba(22,32,31,0.55) 60%, transparent 100%);
+    }
+    .gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+    .gallery-caption-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: 0.95rem;
+      color: #FFF8F4;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .gallery-caption-icon {
+      color: #FFD2C2;
+      background: rgba(255,210,194,0.15);
+      backdrop-filter: blur(10px);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,210,194,0.3);
+      transition: background 0.3s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      flex-shrink: 0;
+    }
+    .gallery-item:hover .gallery-caption-icon {
+      background: rgba(255,210,194,0.28);
+      transform: rotate(20deg) scale(1.12);
+    }
+    .gallery-caption-icon svg { width: 16px; height: 16px; }
+
+    /* ── Ambient bottom glow (renders behind the card) ── */
+    .gi-ambient {
+      position: absolute; bottom: -8px; left: 8%; right: 8%; height: 18px;
+      background: radial-gradient(ellipse at center, rgba(255,210,194,0.4) 0%, transparent 70%);
+      filter: blur(6px);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none; z-index: -1;
+    }
+    .gallery-item:hover .gi-ambient { opacity: 1; }
+
+    /* ── Gallery filter tabs (home view) ── */
+    .gallery-center { text-align: center; margin-top: 3rem; }
+    .gallery-center .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .gallery-center .btn-outline svg { width: 16px; height: 16px; }
+
+    /* ── About ── */
+    #about { background: linear-gradient(135deg, #4A6361, #5E7E7C); padding: 6rem 1.5rem; }
+    .about-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-image-wrap { position: relative; }
+    .about-image { border-radius: 16px; overflow: hidden; height: 480px; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .about-badge-bottom {
+      position: absolute; bottom: -20px; right: -20px; background: rgba(22,32,31,0.9);
+      border: 1px solid rgba(255,210,194,0.3); border-radius: 16px; padding: 1.25rem 1.5rem;
+      backdrop-filter: blur(12px); box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .about-badge-bottom .years { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; }
+    .about-badge-bottom .years-sub { color: rgba(255,248,244,0.7); font-size: 0.8rem; margin-top: 4px; }
+    .about-badge-top {
+      position: absolute; top: 20px; left: -20px; background: linear-gradient(135deg, #FFD2C2, #E8A98F);
+      border-radius: 16px; padding: 1rem 1.25rem; box-shadow: 0 10px 40px rgba(255,210,194,0.3);
+    }
+    .about-badge-top .badge-icon { font-size: 1.5rem; color: #4A6361; }
+    .about-badge-top .badge-icon svg { width: 26px; height: 26px; }
+    .about-badge-top .badge-title { color: #4A6361; font-weight: 700; font-size: 0.8rem; margin-top: 4px; }
+    .about-badge-top .badge-sub { color: #5E7E7C; font-size: 0.7rem; }
+    .about-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #FFF8F4; line-height: 1.2; margin-bottom: 1.5rem; }
+    .about-text { color: rgba(255,248,244,0.72); line-height: 1.85; margin-bottom: 1.25rem; font-size: 1rem; }
+    .about-features { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
+    .about-feature { display: flex; align-items: center; gap: 0.5rem; }
+    .about-feature span:first-child { font-size: 1.1rem; color: var(--peach); display: inline-flex; }
+    .about-feature svg { width: 20px; height: 20px; }
+    .about-feature span:last-child { color: rgba(255,210,194,0.85); font-size: 0.85rem; font-weight: 500; }
+
+    #testimonials { padding: 6rem 1.5rem; }
+    .testimonials-grid { max-width: 1152px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .testimonial-card {
+      background: linear-gradient(145deg, rgba(74,99,97,0.45) 0%, rgba(30,43,41,0.6) 100%);
+      border: 1px solid rgba(255,210,194,0.15);
+      border-radius: 20px; padding: 2rem;
+      transition: transform 0.35s cubic-bezier(0.175,0.885,0.32,1.275), border-color 0.35s ease, box-shadow 0.35s ease;
+      position: relative; overflow: hidden;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute; top: -10px; right: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem; line-height: 1;
+      color: rgba(255,210,194,0.06);
+      pointer-events: none;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,210,194,0.45);
+      box-shadow: 0 20px 55px rgba(0,0,0,0.4), 0 0 30px rgba(255,210,194,0.08);
+    }
+    .stars { margin-bottom: 1rem; display: flex; gap: 2px; }
+    .star { color: #FFD2C2; font-size: 0.85rem; }
+    .testimonial-text { color: rgba(255,248,244,0.8); font-size: 0.875rem; line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
+    .testimonial-name { color: #FFD2C2; font-size: 0.9rem; font-weight: 700; }
+    .testimonial-role { color: rgba(255,248,244,0.45); font-size: 0.72rem; margin-top: 3px; letter-spacing: 0.04em; }
+
+    /* ── Booking Section Container ── */
+    #booking { background: linear-gradient(135deg, #1E2B29, #4A6361, #1E2B29); padding: 6rem 1.5rem; }
+    .booking-inner { max-width: 960px; margin: 0 auto; }
+    
+    .booking-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.15); border-top: 1px solid rgba(255, 255, 255, 0.3); border-left: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 24px; padding: clamp(2rem, 5vw, 4rem); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1); position: relative; overflow: hidden; z-index: 1; transition: border-color 0.4s ease, box-shadow 0.4s ease; animation: cardAmbient 5s ease-in-out infinite;
+    }
+    .booking-card::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,210,194,0.05) 60deg, rgba(232,169,143,0.03) 120deg, transparent 180deg);
+      animation: cardBgSpin 10s linear infinite; pointer-events: none; z-index: -1;
+    }
+    .booking-card > * { position: relative; z-index: 1; }
+    @keyframes cardBgSpin { from { transform: rotate(0deg); } to   { transform: rotate(360deg); } }
+    @keyframes cardAmbient {
+      0%, 100% { box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1); }
+      50% { box-shadow: 0 40px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2), 0 0 50px rgba(255,210,194,0.08); }
+    }
+    .booking-card:hover { border-color: rgba(255,210,194,0.38); box-shadow: 0 35px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 40px rgba(255,210,194,0.07); }
+
+    .booking-input {
+      background: rgba(0, 0, 0, 0.2) !important; border: 1px solid rgba(255, 210, 194, 0.15) !important; box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; color: #FFF8F4; border-radius: 12px !important; padding: 14px 18px; width: 100%; outline: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; font-family: 'Inter', sans-serif; font-size: 0.875rem;
+    }
+    .booking-input:focus { border-color: rgba(255, 210, 194, 0.8) !important; background: rgba(0, 0, 0, 0.35) !important; box-shadow: 0 0 0 4px rgba(255, 210, 194, 0.15), inset 0 2px 5px rgba(0, 0, 0, 0.3) !important; transform: translateY(-2px); }
+    .booking-input::placeholder { color: rgba(255,248,244,0.4); }
+    .booking-input option { background: #1E2B29; color: #FFF8F4; }
+    .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .booking-full { grid-column: span 2; }
+    .booking-label { display: block; color: rgba(255,210,194,0.8); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; margin-bottom: 0.5rem; text-transform: uppercase; }
+    .booking-footer { text-align: center; margin-top: 2rem; }
+    .booking-footer .btn-primary { display: inline-flex; align-items: center; gap: 10px; }
+    .booking-footer .btn-primary svg { width: 16px; height: 16px; }
+    .booking-note { color: rgba(255,248,244,0.4); font-size: 0.75rem; margin-top: 1rem; }
+
+    /* Booking step indicator */
+    .booking-steps { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin-bottom: 2.25rem; margin-top: 1.15rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,210,194,0.1); }
+    .booking-step { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; }
+    .step-num { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; background: rgba(255,210,194,0.08); border: 1.5px solid rgba(255,210,194,0.2); color: rgba(255,210,194,0.4); transition: all 0.45s cubic-bezier(0.34,1.56,0.64,1); }
+    .booking-step span { font-size: 0.62rem; color: rgba(255,210,194,0.35); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+    .booking-step.step-active .step-num { background: linear-gradient(135deg, #FFD2C2, #E8A98F); border-color: transparent; color: #1E2B29; box-shadow: 0 0 0 6px rgba(255,210,194,0.12), 0 4px 20px rgba(255,210,194,0.35); }
+    .booking-step.step-active span { color: #FFD2C2; }
+    .booking-step.step-done .step-num { background: rgba(255,210,194,0.18); border-color: rgba(255,210,194,0.4); color: #FFD2C2; }
+    .booking-step.step-done span { color: rgba(255,210,194,0.6); }
+    .step-connector { flex: 1; min-width: 36px; height: 1.5px; background: rgba(255,210,194,0.12); margin: 0 0.6rem; margin-bottom: 1.6rem; position: relative; overflow: hidden; }
+    .step-connector::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(to right, transparent, #FFD2C2, transparent); transition: left 0.6s ease; }
+    .step-connector.line-fill::after { left: 0; }
+
+    .booking-field { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; transition-delay: 0s; position: relative; }
+    .booking-field.field-visible { opacity: 1; transform: translateY(0); }
+    .booking-field .booking-label { position: absolute; top: 50%; left: 17px; transform: translateY(-50%); pointer-events: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-size: 0.82rem; font-weight: 500; color: rgba(255,248,244,0.6); text-transform: none; letter-spacing: 0.01em; background: transparent; padding: 0; margin: 0; }
+    .booking-field .booking-input { padding-top: 20px; padding-bottom: 8px; height: 56px; }
+    .booking-field .booking-input:focus ~ .booking-label, .booking-field .booking-input:not(:placeholder-shown) ~ .booking-label { top: 10px; transform: translateY(0); font-size: 0.62rem; color: #FFD2C2; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
+    .booking-field .booking-input[data-has-value="true"] ~ .booking-label { top: 10px; transform: translateY(0); font-size: 0.62rem; color: #FFD2C2; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
+    .booking-field select.booking-input { padding-top: 20px; padding-bottom: 8px; height: 56px; }
+    .booking-field textarea.booking-input { padding-top: 24px; height: auto; }
+    .booking-field textarea.booking-input ~ .booking-label { top: 18px; transform: none; }
+    .booking-field textarea.booking-input:focus ~ .booking-label, .booking-field textarea.booking-input:not(:placeholder-shown) ~ .booking-label { top: 8px; transform: none; }
+
+    .success-msg { text-align: center; padding: 3.5rem 2rem; display: none; position: relative; overflow: hidden; }
+    .success-particles { position: absolute; inset: 0; pointer-events: none; }
+    .s-particle { position: absolute; border-radius: 50%; background: #FFD2C2; animation: sparkleFly 1.6s ease-out forwards; opacity: 0; }
+    @keyframes sparkleFly { 0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); } 100% { opacity: 0; transform: translateY(-120px) scale(0.2) rotate(360deg); } }
+    .success-icon-ring { width: 96px; height: 96px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, rgba(255,210,194,0.2), rgba(232,169,143,0.1)); border: 2px solid rgba(255,210,194,0.35); display: flex; align-items: center; justify-content: center; animation: successPop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; box-shadow: 0 0 40px rgba(255,210,194,0.15); }
+    @keyframes successPop { from { transform: scale(0) rotate(-20deg); opacity: 0; } to { transform: scale(1) rotate(0deg); opacity: 1; } }
+    .success-icon-ring svg { width: 44px; height: 44px; color: #FFD2C2; }
+    
+    .success-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .success-title.returning-client { font-size: 1.4rem; }
+    .success-sub { color: rgba(255,248,244,0.72); line-height: 1.6; }
+    .success-returning-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,210,194,0.12); border: 1px solid rgba(255,210,194,0.3);
+      border-radius: 50px; padding: 5px 16px; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #FFD2C2;
+      margin-bottom: 1rem;
+    }
+
+    .booking-error { display: none; align-items: flex-start; gap: 0.9rem; background: rgba(232,169,143,0.08); border: 1px solid rgba(232,169,143,0.35); border-radius: 16px; padding: 1.1rem 1.25rem; margin-bottom: 1.5rem; color: var(--cream); animation: fadeIn 0.4s ease forwards; }
+    .booking-error i { flex-shrink: 0; width: 22px; height: 22px; color: var(--peach); margin-top: 2px; }
+    .booking-error-text { flex: 1; font-size: 0.9rem; line-height: 1.5; }
+    .booking-error-text strong { color: var(--peach); }
+    .booking-error-actions { display: flex; gap: 0.6rem; margin-top: 0.75rem; flex-wrap: wrap; }
+    .booking-error-actions a { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 600; padding: 8px 16px; border-radius: 50px; text-decoration: none; border: 1px solid rgba(255,210,194,0.4); color: #FFD2C2; transition: all 0.25s ease; }
+    .booking-error-actions a:hover { background: #FFD2C2; color: var(--aqua-deep); }
+    .booking-error-actions a svg, .booking-error-actions a i { width: 14px; height: 14px; }
+
+    .btn-primary.loading { pointer-events: none; opacity: 0.7; }
+    .btn-primary.loading::after { content: ''; display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(74,99,97,0.4); border-top-color: #4A6361; border-radius: 50%; animation: btnSpin 0.7s linear infinite; margin-left: 8px; vertical-align: middle; }
+    @keyframes btnSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* ── Contact ── */
+    #contact { padding: 5rem 1.5rem; }
+    .contact-grid { max-width: 1152px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .contact-card { background: rgba(74,99,97,0.4); border: 1px solid rgba(255,210,194,0.2); border-radius: 16px; padding: 2rem; text-align: center; transition: transform 0.15s ease, border-color 0.35s ease, box-shadow 0.35s ease; transform-style: preserve-3d; will-change: transform; }
+    .contact-card:hover { border-color: rgba(255,210,194,0.45); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(255,210,194,0.07); }
+    .contact-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--peach); display: flex; justify-content: center; }
+    .contact-icon svg { width: 40px; height: 40px; }
+    .contact-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #FFD2C2; margin-bottom: 1rem; }
+    .contact-line { color: rgba(255,248,244,0.7); font-size: 0.875rem; line-height: 2; }
+    .social-row { text-align: center; margin-top: 3.5rem; }
+    .social-label { color: rgba(255,210,194,0.7); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
+    .social-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .social-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 10px 22px; border: 1px solid rgba(255,210,194,0.3); border-radius: 50px; color: #FFD2C2; font-size: 0.82rem; font-weight: 600; text-decoration: none; letter-spacing: 0.06em; background: rgba(255,210,194,0.05); transition: all 0.3s ease; }
+    .social-link svg { width: 16px; height: 16px; }
+    .social-link:hover { background: rgba(255,210,194,0.15); border-color: rgba(255,210,194,0.6); }
+
+    .contact-icon-wrap { position: relative; width: 76px; height: 76px; margin: 0 auto 1.4rem; }
+    .contact-icon-ring { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, #FFD2C2 0%, transparent 40%, #E8A98F 70%, transparent 100%); animation: iconRingRotate 3.5s linear infinite paused; opacity: 0; transition: opacity 0.4s ease; }
+    .contact-card:hover .contact-icon-ring { opacity: 1; animation-play-state: running; }
+    @keyframes iconRingRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .contact-icon-inner { position: absolute; inset: 4px; background: rgba(22,32,31,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--peach); transition: background 0.35s ease; }
+    .contact-card:hover .contact-icon-inner { background: rgba(74,99,97,0.5); }
+    .contact-icon-inner svg { width: 28px; height: 28px; }
+
+    .copy-line { cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: color 0.25s ease; }
+    .copy-line:hover { color: #FFD2C2; }
+    .copy-line .copy-badge { display: inline-block; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,210,194,0.5); border: 1px solid rgba(255,210,194,0.25); padding: 1px 5px; border-radius: 4px; opacity: 0; transition: opacity 0.2s ease; margin-left: 2px; }
+    .copy-line:hover .copy-badge { opacity: 1; }
+
+    .social-link-ig:hover  { background: rgba(193,53,132,0.15) !important; border-color: rgba(193,53,132,0.5) !important; color: #e1306c !important; }
+    .social-link-fb:hover  { background: rgba(24,119,242,0.15) !important; border-color: rgba(24,119,242,0.5) !important; color: #1877f2 !important; }
+    .social-link-wa:hover  { background: rgba(37,211,102,0.15) !important; border-color: rgba(37,211,102,0.5) !important; color: #25D366 !important; }
+    .social-link-tt:hover  { background: rgba(255,255,255,0.12) !important; border-color: rgba(255,255,255,0.4) !important; color: #fff !important; }
+
+    /* ── Footer ── */
+    footer { background: #16201F; border-top: 1px solid rgba(255,210,194,0.12); padding: 3rem 1.5rem 2rem; }
+    .footer-inner { max-width: 1152px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-bottom: 2.5rem; }
+    .footer-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+    .footer-brand-sub { color: rgba(255,210,194,0.5); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; }
+    .footer-desc { color: rgba(255,248,244,0.5); font-size: 0.82rem; line-height: 1.8; }
+    .footer-col-title { color: #FFD2C2; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; }
+    .footer-links a { color: rgba(255,248,244,0.55); font-size: 0.85rem; text-decoration: none; transition: color 0.3s; cursor: pointer; }
+    .footer-links a:hover { color: #FFD2C2; }
+    .footer-service { color: rgba(255,248,244,0.5); font-size: 0.82rem; display: inline-flex; align-items: center; gap: 8px; }
+    .footer-service svg { width: 12px; height: 12px; color: var(--peach); }
+    .footer-bottom { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 0.75rem; padding-top: 1.5rem; flex-wrap: wrap; }
+    .footer-copy { color: rgba(255,248,244,0.35); font-size: 0.75rem; }
+    .footer-love { color: rgba(255,210,194,0.4); font-size: 0.75rem; display: inline-flex; align-items: center; gap: 6px; }
+    .footer-love svg { width: 14px; height: 14px; }
+
+    /* ── Utilities ── */
+    .whatsapp-float { position: fixed; bottom: 5.5rem; right: 1.5rem; z-index: 88; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 22px rgba(37,211,102,0.42); cursor: pointer; text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease; animation: waPulse 2.8s ease-in-out infinite; }
+    .whatsapp-float:hover { transform: scale(1.12); box-shadow: 0 8px 32px rgba(37,211,102,0.55); animation: none; }
+    .whatsapp-float svg { width: 26px; height: 26px; color: #fff; }
+    @keyframes waPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+
+    .scroll-top-btn {  position: fixed; bottom: 5.5rem; left: 1.5rem; z-index: 87; width: 44px; height: 44px; border-radius: 50%; background: rgba(74,99,97,0.9); border: 1px solid rgba(255,210,194,0.3); color: #FFD2C2; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transform: translateY(16px); transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1); backdrop-filter: blur(12px); }
+    .scroll-top-btn.stt-visible { opacity: 1; transform: translateY(0); }
+    .scroll-top-btn:hover { background: rgba(255,210,194,0.15); border-color: rgba(255,210,194,0.55); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,210,194,0.15); }
+    .scroll-top-btn svg { width: 18px; height: 18px; }
+
+    #toast-container { position: fixed; bottom: 6rem; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; pointer-events: none; }
+    .toast { background: rgba(74,99,97,0.96); border: 1px solid rgba(255,210,194,0.35); color: #FFD2C2; padding: 11px 22px; border-radius: 50px; font-size: 0.83rem; font-weight: 500; backdrop-filter: blur(20px); animation: toastIn 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards; display: flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+    .toast svg { width: 15px; height: 15px; flex-shrink: 0; }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(12px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .toast.toast-out { animation: toastOut 0.3s ease forwards; }
+    @keyframes toastOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-8px); } }
+
+    .page-view.active { animation: viewSlideIn 0.55s cubic-bezier(0.22,1,0.36,1); }
+    @keyframes viewSlideIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ══════════ HERO PARTICLES ══════════ */
+    .hero-particle {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      background: rgba(255,210,194,0.6);
+      animation: particleDrift linear infinite;
+    }
+    @keyframes particleDrift {
+      0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(-110vh) translateX(var(--dx, 30px)) scale(0.3); opacity: 0; }
+    }
+
+    /* ══════════ BUTTON SHIMMER ══════════ */
+    .btn-primary {
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: skewX(-20deg);
+      transition: left 0s;
+    }
+    .btn-primary:hover::after {
+      left: 160%;
+      transition: left 0.55s ease;
+    }
+
+    /* ══════════ SECTION HEADERS ══════════ */
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700; color: #FFF8F4; margin-bottom: 1rem;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: #FFD2C2;
+      padding: 7px 20px;
+      border: 1px solid rgba(255,210,194,0.35);
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      background: rgba(255,210,194,0.06);
+      position: relative; overflow: hidden;
+    }
+    .section-tag::before {
+      content: '';
+      position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,210,194,0.15), transparent);
+      animation: tagShimmer 3s ease-in-out infinite;
+    }
+    @keyframes tagShimmer {
+      0%   { left: -100%; }
+      50%, 100% { left: 200%; }
+    }
+
+    /* ══════════ NAVBAR GLOW LINE ══════════ */
+    #navbar.scrolled::after {
+      content: '';
+      position: absolute; bottom: 0; left: 5%; right: 5%; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,210,194,0.25), transparent);
+    }
+
+    /* ══════════ EXPLORE TABS ══════════ */
+    .explore-tab {
+      position: relative; overflow: hidden;
+    }
+    .explore-tab::before {
+      content: '';
+      position: absolute; inset: 0; border-radius: 50px;
+      background: linear-gradient(135deg, #FFD2C2, #E8A98F);
+      opacity: 0; transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+    .explore-tab.active::before { opacity: 1; }
+
+    /* ══════════ HERO STAT CHIPS ══════════ */
+    .hero-chip {
+      position: relative; overflow: hidden;
+      transition: all 0.35s ease;
+    }
+    .hero-chip:hover {
+      background: rgba(255,210,194,0.15);
+      border-color: rgba(255,210,194,0.6);
+      color: #FFD2C2;
+    }
+
+    /* ══════════ BRAID TAGS ══════════ */
+    .braid-tag {
+      cursor: default;
+      transition: all 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
+    }
+    .braid-tag:hover {
+      background: rgba(255,210,194,0.14);
+      border-color: rgba(255,210,194,0.65);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 18px rgba(255,210,194,0.12);
+    }
+
+    /* ══════════ FOOTER UPGRADE ══════════ */
+    footer {
+      background: linear-gradient(180deg, #111a19 0%, #16201F 100%);
+      border-top: 1px solid rgba(255,210,194,0.12);
+      padding: 4rem 1.5rem 2rem;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,210,194,0.3), transparent);
+    }
+
+    /* ══════════ SUCCESS SUMMARY ══════════ */
+    .success-summary {
+      margin-top: 2rem;
+      background: rgba(255,210,194,0.06);
+      border: 1px solid rgba(255,210,194,0.2);
+      border-radius: 16px; padding: 1.5rem;
+      text-align: left;
+    }
+    .success-summary-row {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: rgba(255,248,244,0.75); font-size: 0.875rem;
+      padding: 0.5rem 0; border-bottom: 1px solid rgba(255,210,194,0.08);
+    }
+    .success-summary-row:last-child { border-bottom: none; }
+    .success-summary-row i, .success-summary-row svg { width: 16px; height: 16px; color: #FFD2C2; flex-shrink: 0; }
+    .success-summary-row strong { color: #FFF8F4; font-weight: 600; }
+
+    /* ══════════ MOBILE ══════════ */
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: none;
+        gap: 10px;
+      }
+      .gallery-item:first-child { grid-row: span 1; }
+      .gallery-item { opacity: 1 !important; transform: none !important; }
+      .gallery-caption { transform: translateY(0) !important; }
+      .gallery-caption-title { font-size: 0.78rem; }
+      .gallery-caption-icon { width: 28px; height: 28px; }
+      .lifestyle-container { flex-direction: column; gap: 2.5rem; }
+      .lifestyle-visuals { height: 420px; width: 100%; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .service-card { height: 320px; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+            #chatbot-window { bottom: 85px; right: 10px; width: calc(100vw - 40px); }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════ SCROLL PROGRESS ══════════ */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2.5px; width: 0%;
+      background: linear-gradient(to right, #FFD2C2, #E8A98F, #FFD2C2);
+      z-index: 10000; border-radius: 0 3px 3px 0;
+      pointer-events: none; transition: width 0.08s linear;
+      box-shadow: 0 0 8px rgba(255,210,194,0.5);
+    }
+
+    /* scroll-progress rule moved to UI polish block above */
+
+    .svc-cats { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.75rem; padding-bottom: 1.75rem; border-bottom: 1px solid rgba(255,210,194,0.1); }
+    .svc-cat { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(255,210,194,0.2); background: rgba(255,210,194,0.04); color: rgba(255,210,194,0.55); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.25s ease; font-family: 'Inter', sans-serif; }
+    .svc-cat svg { width: 12px; height: 12px; }
+    .svc-cat:hover { border-color: rgba(255,210,194,0.45); color: #FFD2C2; background: rgba(255,210,194,0.08); }
+    .svc-cat.active { background: linear-gradient(135deg, #FFD2C2, #E8A98F); color: #1E2B29; border-color: transparent; box-shadow: 0 4px 14px rgba(255,210,194,0.25); }
+
+    .booking-field input[type="date"] ~ .booking-label { top: 10px; transform: translateY(0); font-size: 0.62rem; color: #FFD2C2; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
+
+    .contact-card::before { content: ''; position: absolute; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(255,210,194,0.1) 0%, transparent 70%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease; top: var(--my, 50%); left: var(--mx, 50%); transform: translate(-50%, -50%); z-index: 0; }
+    .contact-card:hover::before { opacity: 1; }
+    .contact-card > * { position: relative; z-index: 1; }
+
+    .map-row { max-width: 1152px; margin: 2rem auto 0; border-radius: 20px; overflow: hidden; height: 230px; border: 1px solid rgba(255,210,194,0.18); position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.35); transition: box-shadow 0.35s ease, transform 0.35s ease; }
+    .map-row:hover { box-shadow: 0 28px 80px rgba(0,0,0,0.45); transform: translateY(-2px); }
+    .map-row iframe { width: 100%; height: 100%; border: none; filter: saturate(0.4) brightness(0.6) hue-rotate(130deg); }
+    .map-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.1rem 1.5rem; background: linear-gradient(to top, rgba(22,32,31,0.97) 0%, rgba(22,32,31,0.45) 65%, transparent 100%); display: flex; align-items: center; gap: 0.75rem; }
+    .map-overlay svg { width: 18px; height: 18px; color: #FFD2C2; flex-shrink: 0; }
+    .map-overlay-text { color: rgba(255,248,244,0.78); font-size: 0.83rem; }
+    .map-overlay-link { color: #FFD2C2; font-weight: 600; font-size: 0.78rem; text-decoration: none; border-bottom: 1px solid rgba(255,210,194,0.4); padding-bottom: 1px; letter-spacing: 0.04em; margin-left: auto; flex-shrink: 0; transition: border-color 0.2s ease; }
+    .map-overlay-link:hover { border-color: #FFD2C2; }
+
+    .contact-card-wa { background: linear-gradient(135deg, rgba(37,211,102,0.07), rgba(22,32,31,0.45)); border-color: rgba(37,211,102,0.2) !important; cursor: pointer; text-decoration: none; display: block; }
+    .contact-card-wa:hover { border-color: rgba(37,211,102,0.5) !important; box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(37,211,102,0.1) !important; }
+    .contact-card-wa .contact-icon-ring { background: conic-gradient(from 0deg, #25D366 0%, transparent 40%, #128C7E 70%, transparent 100%); }
+    .contact-card-wa .contact-icon-inner { color: #25D366; }
+    .contact-card-wa .contact-title { color: #25D366; }
+
+    @media (min-width: 900px) { .contact-grid-4 { grid-template-columns: repeat(4, 1fr) !important; } }
+
+    .success-summary { background: rgba(255,210,194,0.06); border: 1px solid rgba(255,210,194,0.15); border-radius: 14px; padding: 1.25rem 1.5rem; margin: 1.5rem auto 0; max-width: 360px; text-align: left; display: flex; flex-direction: column; gap: 0.6rem; }
+    .success-summary-row { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: rgba(255,248,244,0.75); }
+    .success-summary-row svg { width: 14px; height: 14px; color: #FFD2C2; flex-shrink: 0; }
+    .success-summary-row strong { color: #FFD2C2; }
+
+    /* ── Responsive Mobile Enhancements ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .lifestyle-container { flex-direction: column; text-align: center; }
+      .lifestyle-sub { margin: 0 auto; }
+      .lifestyle-visuals { width: 100%; height: 400px; margin-top: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      /* Mobile Navbar & Background override to fix overlap */
+      .navbar-inner {  background: rgba(54, 53, 53, 0.8); } 
+      #navbar.scrolled {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+      
+      #hero { padding-top: 0; min-height: 100svh; }
+      .scroll-cue { display: none; }
+      .hero-top-row { flex-direction: column; gap: 1rem; }
+      .hero-promo { align-self: flex-start; text-align: left; }
+      .hero-bottom-row { justify-content: flex-start; }
+
+      .nav-links, .navbar-cta { display: none; }
+      
+      #mobile-menu {
+        display: block; position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+        background: var(--dark); border: 1px solid rgba(255, 210, 194, 0.08); border-radius: 50px;
+        z-index: 100; width: max-content; max-width: 92vw; padding: 6px; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      }
+      
+      .mobile-menu-inner {
+        display: flex; flex-direction: row; align-items: center; gap: 2px;
+        overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none;
+      }
+      .mobile-menu-inner::-webkit-scrollbar { display: none; }
+      
+      .mobile-menu-inner .nav-link {
+        font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500; padding: 10px 20px;
+        border-radius: 50px; color: rgba(255,248,244,0.6); text-decoration: none; white-space: nowrap;
+        transition: background 0.3s ease, color 0.3s ease; line-height: 1;
+      }
+      .mobile-menu-inner .nav-link::after { display: none; }
+      .mobile-menu-inner .nav-link.active { background: rgba(255, 255, 255, 0.12); color: #FFF8F4; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .braiding-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-badge-bottom { right: 0; }
+      .about-badge-top { left: 0; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-grid .gallery-item:first-child { grid-row: span 1; grid-column: span 2; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .booking-grid { grid-template-columns: 1fr; }
+      .booking-full { grid-column: span 1; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .explore-tabs { justify-content: center; }
+
+      /* Mobile Gallery Text Reveal Always-on */
+      .gallery-item { opacity: 1 !important; transform: none !important; }
+      .gallery-item::after { 
+        opacity: 1; 
+        background: linear-gradient(to top, rgba(22, 32, 31, 0.95) 0%, rgba(22, 32, 31, 0) 55%); 
+      }
+      .gallery-caption { transform: translateY(0); padding: 1rem 0.85rem 0.85rem; }
+      .gallery-caption-title { font-size: 0.75rem; }
+      .gallery-caption-icon { width: 26px; height: 26px; }
+      .gallery-caption-icon svg { width: 12px; height: 12px; }
+      .gi-glow-top, .gi-index, .gi-ambient { display: none; }
+
+      .map-row { height: 170px; }
+      .svc-cats { gap: 0.4rem; }
+      .svc-cat { padding: 6px 12px; font-size: 0.68rem; }
+      .contact-grid-4 { grid-template-columns: 1fr !important; }
+    }
+    
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .contact-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    /* Chat Styles */
+    /* ── Customer Care Bot ── */
+    #chatbot-wrapper { position: fixed; bottom: 5.5rem; right: 1.5rem; z-index: 9000; }
+    #chatbot-toggle { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #FFD2C2, #E8A98F); border: 2px solid rgba(255,210,194,0.5); color: var(--aqua-deep); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 22px rgba(232,169,143,0.4); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; animation: chatPulse 3s ease-in-out infinite; }
+    #chatbot-toggle:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(232,169,143,0.6); animation: none; }
+    @keyframes chatPulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232,169,143,0.4); } 50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(232,169,143,0); } }
+
+    #chatbot-window { position: absolute; bottom: 70px; right: 0; width: 340px; max-height: 500px; height: 70vh; background: rgba(22, 32, 31, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,210,194,0.2); border-radius: 16px; box-shadow: 0 15px 50px rgba(0,0,0,0.5); display: flex; flex-direction: column; overflow: hidden; transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); opacity: 0; transform: scale(0.9) translateY(20px); pointer-events: none; }
+    #chatbot-window.active { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+
+    .chat-header { padding: 1rem 1.25rem; background: linear-gradient(135deg, rgba(74,99,97,0.8), rgba(30,43,41,0.8)); border-bottom: 1px solid rgba(255,210,194,0.1); display: flex; align-items: center; justify-content: space-between; }
+    .chat-header-info { display: flex; align-items: center; gap: 10px; }
+    .chat-avatar { width: 32px; height: 32px; border-radius: 50%; background: #FFD2C2; display: flex; align-items: center; justify-content: center; color: var(--aqua-deep); }
+    .chat-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: #FFF8F4; line-height: 1.1; }
+    .chat-status { font-size: 0.65rem; color: #25D366; display: flex; align-items: center; gap: 4px; }
+    .chat-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #25D366; display: inline-block; }
+    .chat-close-btn { background: none; border: none; color: rgba(255,210,194,0.6); cursor: pointer; transition: color 0.2s; }
+    .chat-close-btn:hover { color: #FFD2C2; }
+
+    .chat-body { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
+    .chat-body::-webkit-scrollbar { width: 4px; }
+    .chat-body::-webkit-scrollbar-thumb { background: rgba(255,210,194,0.2); }
+
+    .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 0.85rem; line-height: 1.4; animation: fadeIn 0.3s ease; }
+    .chat-msg.bot { align-self: flex-start; background: rgba(255,210,194,0.08); border: 1px solid rgba(255,210,194,0.15); color: #FFF8F4; border-bottom-left-radius: 2px; }
+    .chat-msg.user { align-self: flex-end; background: linear-gradient(135deg, #FFD2C2, #E8A98F); color: var(--aqua-deep); font-weight: 500; border-bottom-right-radius: 2px; }
+    
+    .chat-options-container { padding: 0.5rem 1rem 1rem; background: rgba(22, 32, 31, 0.98); border-top: 1px solid rgba(255,210,194,0.1); }
+    .chat-options-title { font-size: 0.7rem; color: rgba(255,210,194,0.6); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+   .chat-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.chat-options::-webkit-scrollbar { width: 3px; }
+.chat-options::-webkit-scrollbar-track { background: transparent; }
+.chat-options::-webkit-scrollbar-thumb {
+  background: rgba(255,210,194,0.25);
+  border-radius: 3px;
+}
+    .chat-opt-btn { background: rgba(255,210,194,0.05); border: 1px solid rgba(255,210,194,0.2); color: #FFD2C2; padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; text-align: left; cursor: pointer; transition: all 0.2s ease; font-family: 'Inter', sans-serif; }
+    .chat-opt-btn:hover { background: rgba(255,210,194,0.15); border-color: #FFD2C2; }
+
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- ── Navbar ── -->
+<nav id="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="navbar-logo" data-view="home">
+      <!-- animated flowing hair icon -->
+      <div class="logo-circle">
+       <svg class="animated-hair" viewBox="0 0 24 32" width="20" height="27" fill="none" stroke-linecap="round">
+  <g fill="#4A6361" fill-opacity="0.18" stroke="none">
+    <path d="M4,32 C4,23 7,20 12,20 C17,20 20,23 20,32 Z" />
+    <rect x="9" y="14" width="6" height="7" rx="1.5" />
+    <ellipse cx="12" cy="10" rx="4.3" ry="5.3" />
+  </g>
+  <g stroke="#4A6361">
+    <path class="strand" stroke-width="1.3" style="animation-delay: 0s" d="M7,3 C3,8 6,14 3,20 C1,24 4,28 2,31" />
+    <path class="strand" stroke-width="1.4" style="animation-delay: 0.15s" d="M9,2 C6,7 9,13 6,19 C4,23 7,27 5,30" />
+    <path class="strand" stroke-width="1.6" style="animation-delay: 0.3s" d="M11,2 C9,7 12,12 10,17 C9,21 11,25 9,29" />
+    <path class="strand" stroke-width="1.7" style="animation-delay: 0.45s" d="M12,2 C12,7 13,12 12,17 C12,21 13,25 12,29" />
+    <path class="strand" stroke-width="1.6" style="animation-delay: 0.6s" d="M13,2 C15,7 12,12 14,17 C15,21 13,25 15,29" />
+    <path class="strand" stroke-width="1.4" style="animation-delay: 0.75s" d="M15,2 C18,7 15,13 18,19 C20,23 17,27 19,30" />
+    <path class="strand" stroke-width="1.3" style="animation-delay: 0.9s" d="M17,3 C21,8 18,14 21,20 C23,24 20,28 22,31" />
+  </g>
+</svg>
+      </div>
+      <div>
+        <span class="logo-name golden-text">EstyGolden</span>
+        <span class="logo-sub">Salon &amp; Beauty</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#" class="nav-link" data-view="services">Services</a></li>
+      <li><a href="#" class="nav-link" data-view="gallery">Gallery</a></li>
+      <li><a href="#" class="nav-link" data-view="about">About</a></li>
+      <li><a href="#" class="nav-link" data-view="booking">Booking</a></li>
+      <li><a href="#" class="nav-link" data-view="contact">Contact</a></li>
+    </ul>
+
+    <div class="navbar-cta">
+      <!-- Beautiful "Book a Call" Fix Applied Here -->
+      <a href="tel:+2348164234685" class="btn-primary nav-book-btn">
+        <i data-lucide="phone"></i> Book a Call
+      </a>
+    </div>
+  </div>
+
+  <!-- Floating Pill Mobile Menu based on the reference UI style structure -->
+  <div id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <!-- view logic -->
+      <a href="#" class="nav-link active" data-view="home">Home</a>
+      <a href="#" class="nav-link" data-view="services">Services</a>
+      <a href="#" class="nav-link" data-view="gallery">Gallery</a>
+      <a href="#" class="nav-link" data-view="about">About</a>
+      <a href="#" class="nav-link" data-view="booking">Booking</a>
+      <a href="#" class="nav-link" data-view="contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════ HOME VIEW ══════════════════════════════ -->
+<div class="page-view active" id="view-home">
+
+  <!-- ── Hero ── -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img src="https://images.pexels.com/photos/31579771/pexels-photo-31579771.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1400&w=1600" alt="Glowing skin beauty look" />
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-top-row animate-fade-in delay-100">
+        <div class="hero-chips">
+          <span class="hero-chip active">Braids</span>
+          <span class="hero-chip">Glam</span>
+          <span class="hero-chip">Nails</span>
+        </div>
+        <div class="hero-promo">
+          <div class="hero-promo-value">20% Off</div>
+          <div class="hero-promo-label">First Visit · New Clients</div>
+        </div>
+      </div>
+
+      <div class="hero-display animate-fade-in-up delay-200">
+        <div class="hero-display-pre">Glow &amp;</div>
+        <div class="hero-display-main">Golden</div>
+        <p class="hero-sub animate-fade-in-up delay-400">
+          EstyGolden is your premier destination for expert hair braiding, stunning makeup
+          and flawless nails. Every woman deserves to feel beautifully golden.
+        </p>
+        <div class="hero-buttons animate-fade-in-up delay-500">
+          <a href="#" class="btn-primary" data-view="booking" style="font-size:0.9rem;">Book Appointment</a>
+          <a href="#" class="btn-outline" data-view="services" style="font-size:0.9rem;">Our Services</a>
+        </div>
+      </div>
+
+      <div class="hero-bottom-row animate-fade-in delay-600">
+        <div class="hero-rating">
+          <div class="hero-avatars">
+            <img src="https://images.pexels.com/photos/32426327/pexels-photo-32426327.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=100&w=100" alt="Happy client" />
+            <img src="https://images.pexels.com/photos/13735267/pexels-photo-13735267.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=100&w=100" alt="Happy client" />
+            <img src="https://images.pexels.com/photos/7566321/pexels-photo-7566321.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=100&w=100" alt="Happy client" />
+          </div>
+          <div class="hero-rating-text"><strong>4.9/5</strong><br />From 100+ Happy Clients</div>
+        </div>
+        <div class="scroll-cue animate-scroll-bounce">
+          <div class="scroll-cue-ring"><i data-lucide="chevron-down"></i></div>
+          <span>Scroll to Explore</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──Animated Carousel ── -->
+  <section id="lifestyle-wigs">
+    <div class="lifestyle-container">
+      <div class="lifestyle-text reveal">
+        <h2 class="lifestyle-title">Not Just Wigs<br /><span class="golden-text">A Lifestyle</span></h2>
+        <p class="lifestyle-sub">Every strand is designed to match your grind, your goals, and your style comfort.</p>
+        <p class="lifestyle-sub">Get Quality Wigs that Elevate Your Look and Confidence From Our Collection.</p>
+      </div>
+      
+      <div class="lifestyle-visuals reveal" style="transition-delay: 0.2s;">
+        <div class="carousel-track">
+          <!-- Column 1: Scrolls Down -->
+          <div class="carousel-col col-down">
+            <!-- Set 1 -->
+            <img src="images/hairga1.jfif" alt="Female Wig Style 1">
+            <img src="images/hairga2.jfif" alt="Female Wig Style 2">
+            <img src="images/hairga3.jfif" alt="Female Wig Style 3">
+            <img src="images/hairga4.jfif" alt="Female Wig Style 4">
+            <img src="images/hairga18.webp" alt="Female Wig Style 18">
+            <img src="images/hair_doll1.jfif" alt="Female Wig Style 19">
+            <img src="images/hair_doll2.jfif" alt="Female Wig Style 20">
+            <img src="images/hair_doll3.jfif" alt="Female Wig Style 21">
+            <img src="images/hair_doll4.jfif" alt="Female Wig Style 22">
+            <img src="images/hair_doll5.jfif" alt="Female Wig Style 23">
+            <img src="images/hair_doll6.jfif" alt="Female Wig Style 24">
+            <img src="images/hair_doll7.jfif" alt="Female Wig Style 25">
+            <img src="images/hair_doll8.jfif" alt="Female Wig Style 26">
+            <img src="images/hair_doll9.jfif" alt="Female Wig Style 27">
+            <img src="images/hair_doll33.jfif" alt="Female Wig Style 51">
+            <img src="images/hair_doll13.jfif" alt="Female Wig Style 34">
+
+            <!-- Set 2 (Duplicated for seamless loop) -->
+            <img src="images/hairga5.jfif" alt="Female Wig Style 5">
+            <img src="images/hairga6.jfif" alt="Female Wig Style 6">
+            <img src="images/hairga7.jfif" alt="Female Wig Style 7">
+            <img src="images/hairga15.jfif" alt="Female Wig Style 15">
+            <img src="images/hair_doll10.jfif" alt="Female Wig Style 28">
+            <img src="images/hair_doll11.jfif" alt="Female Wig Style 29">
+            <img src="images/hair_doll12.jfif" alt="Female Wig Style 30">
+            <img src="images/hair_doll15.jfif" alt="Female Wig Style 33">
+            <img src="images/hair_doll17.jfif" alt="Female Wig Style 35">
+            <img src="images/hair_doll18.jfif" alt="Female Wig Style 36">
+            <img src="images/hair_doll14.jfif" alt="Female Wig Style 32">
+
+          </div>
+          
+          <!-- Column 2: Scrolls Up -->
+          <div class="carousel-col col-up">
+            <!-- Set 1 -->
+            <img src="images/hairga8.jfif" alt="Female Wig Style 8">
+            <img src="images/hairga9.jfif" alt="Female Wig Style 9">
+            <img src="images/hairga10.jfif" alt="Female Wig Style 10">
+            <img src="images/hairga11.webp" alt="Female Wig Style 11">
+            <img src="images/hairga17.webp" alt="Female Wig Style 17">
+            <img src="images/hair_doll19.jfif" alt="Female Wig Style 37">
+            <img src="images/hair_doll20.jfif" alt="Female Wig Style 38">
+            <img src="images/hair_doll21.jfif" alt="Female Wig Style 39">
+            <img src="images/hair_doll22.jfif" alt="Female Wig Style 40">
+            <img src="images/hair_doll23.jfif" alt="Female Wig Style 41">
+            <img src="images/hair_doll24.jfif" alt="  Female Wig Style 42">
+            <img src="images/hair_doll25.jfif " alt=" Female Wig Style 43">
+            <img src="images/hair_doll26.jfif" alt=" Female Wig Style 44">
+            <img src="images/hair_doll27.jfif" alt=" Female Wig Style 45">
+            <img src="images/hair_doll28.jfif" alt=" Female Wig Style 46">
+
+            <!-- Set 2 (Duplicated for seamless loop) -->
+            <img src="images/hairga12.webp" alt="Female Wig Style 12">
+            <img src="images/hairga13.jfif" alt="Female Wig Style 13">
+            <img src="images/hairga14.jfif" alt="Female Wig Style 14">
+            <img src="images/hairga16.jfif" alt="Female Wig Style 16">
+            <img src="images/hair_doll30.jfif" alt=" Female Wig Style 48">
+            <img src="images/hair_doll31.jfif" alt=" Female Wig Style 49">
+            <img src="images/hair_doll32.jfif" alt=" Female Wig Style 50">
+            <img src="images/hair_doll34.jfif" alt=" Female Wig Style 52">
+            <img src="images/hair_doll35.jfif" alt=" Female Wig Style 53">
+            <img src="images/hair_doll36.jfif" alt=" Female Wig Style 54"> 
+            <img src="images/hair_doll37.jfif" alt=" Female Wig Style 55">
+            <img src="images/hair_doll29.jfif" alt=" Female Wig Style 58"
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══════════════════════════════ SERVICES VIEW ══════════════════════════════ -->
+<div class="page-view" id="view-services">
+
+  <section id="services" class="bg-section">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="section-header reveal">
+        <div class="section-tag">Our Services</div>
+        <h2 class="section-title">Beauty That <span class="golden-text">Speaks</span> For Itself</h2>
+        <p class="section-sub">From braids to glam to nails explore everything we offer at EstyGolden.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <img src="images/Braids.webp" alt="Hair Braiding" />
+          <div class="service-card-overlay"></div>
+          <div class="service-tag">Signature</div>
+          <div class="service-content">
+            <div class="service-icon"><i data-lucide="sparkle"></i></div>
+            <div class="service-title">Hair Braiding</div>
+            <p class="service-desc">Box braids, cornrows, Ghana weaving, Senegalese twists, faux locs &amp; more — crafted with precision.</p>
+            <a href="#" class="service-link" data-view="booking">Book This →</a>
+          </div>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.12s">
+          <img src="images/hair_making.jfif" alt="Hair Making" />
+          <div class="service-card-overlay"></div>
+          <div class="service-tag">Popular</div>
+          <div class="service-content">
+            <div class="service-icon"><i data-lucide="sparkle"></i></div>
+            <div class="service-title">Hair Making</div>
+            <p class="service-desc">Weaves, wigs, natural styling, blowouts, relaxers and protective styles tailored for you.</p>
+            <a href="#" class="service-link" data-view="booking">Book This →</a>
+          </div>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.24s">
+          <img src="https://images.pexels.com/photos/7566321/pexels-photo-7566321.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600" alt="Makeup" />
+          <div class="service-card-overlay"></div>
+          <div class="service-tag">Trending</div>
+          <div class="service-content">
+            <div class="service-icon"><i data-lucide="sparkle"></i></div>
+            <div class="service-title">Makeup</div>
+            <p class="service-desc">From natural glam to full beat — bridal, editorial, events &amp; everyday flawless looks.</p>
+            <a href="#" class="service-link" data-view="booking">Book This →</a>
+          </div>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.24s">
+          <img src="images/nails.webp" alt="Nails" />
+          <div class="service-card-overlay"></div>
+          <div class="service-tag">Trending</div>
+          <div class="service-content">
+            <div class="service-icon"><i data-lucide="sparkle"></i></div>
+            <div class="service-title">Nails</div>
+            <p class="service-desc">Nail extensions, gel polish, acrylics, manicures, pedicures, and custom nail art tailored for you.</p>
+            <a href="#" class="service-link" data-view="booking">Book This →</a>
+          </div>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.24s">
+          <img src="images/hair_care.webp" alt="Hair Care" />
+          <div class="service-card-overlay"></div>
+          <div class="service-tag">NEW</div>
+          <div class="service-content">
+            <div class="service-icon"><i data-lucide="sparkle"></i></div>
+            <div class="service-title">Hair Care</div>
+            <p class="service-desc">Hair treatments, deep conditioning, scalp care, trims, strengthening therapies, and healthy hair maintenance tailored for you.</p>
+            <a href="#" class="service-link" data-view="booking">Book This →</a>
+          </div>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.36s">
+          <img src="images/manicure.jfif" alt="Manicure & Pedicure" />
+          <div class="service-card-overlay"></div>
+          <div class="service-tag">New</div>
+          <div class="service-content">
+            <div class="service-icon"><i data-lucide="sparkle"></i></div>
+            <div class="service-title">Manicure &amp; Pedicure</div>
+            <p class="service-desc">Gel, acrylic, nail art, French tips &amp; spa manicures. Your nails, your canvas.</p>
+            <a href="#" class="service-link" data-view="booking">Book This →</a>
+          </div>
+        </div>
+         <div class="service-card reveal" style="transition-delay:0.48s">
+          <img src="images/wigs.jfif" alt="Wigs" />
+          <div class="service-card-overlay"></div>
+          <div class="service-tag">Custom</div>
+          <div class="service-content">
+            <div class="service-icon"><i data-lucide="sparkle"></i></div>
+            <div class="service-title">Wigs</div>
+            <p class="service-desc">Ready-to-wear and custom-made wigs — sewn, styled, and fitted to order, plus quality wig units available for purchase.</p>
+            <a href="#" class="service-link" data-view="booking">Book This →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Braiding Styles ── -->
+  <section id="braiding">
+    <div class="braiding-inner">
+      <div class="reveal">
+        <div class="section-tag">Braiding Specialities</div>
+        <h2 class="braiding-title">50+ Braiding <br /><span class="golden-text">Styles &amp; Techniques</span></h2>
+        <p class="braiding-desc">Our expert braiders are trained in traditional African techniques and modern protective styles. Whether you want a sleek classic or a bold statement look — we bring your vision to life.</p>
+        <a href="#" class="btn-primary" data-view="booking">Book a Braiding Session</a>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="braid-tags">
+          <span class="braid-tag">Box Braids</span>
+          <span class="braid-tag">Cornrows</span>
+          <span class="braid-tag">Ghana Weaving</span>
+          <span class="braid-tag">Senegalese Twists</span>
+          <span class="braid-tag">Faux Locs</span>
+          <span class="braid-tag">Knotless Braids</span>
+          <span class="braid-tag">Feed-In Braids</span>
+          <span class="braid-tag">Goddess Braids</span>
+          <span class="braid-tag">Micro Braids</span>
+          <span class="braid-tag">Fulani Braids</span>
+          <span class="braid-tag">Crochet Braids</span>
+          <span class="braid-tag">Tree Braids</span>
+        </div>
+        <div class="braiding-image">
+          <img src="https://images.pexels.com/photos/11482130/pexels-photo-11482130.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Close up braids texture" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══════════════════════════════ GALLERY VIEW ══════════════════════════════ -->
+<div class="page-view" id="view-gallery">
+
+  <section id="gallery" class="bg-section">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      
+      <div class="section-header reveal">
+        <div class="section-tag">Our Work</div>
+        <h2 class="section-title">The <span class="golden-text">Gallery</span></h2>
+        <p class="section-sub">A glimpse into the golden looks we've created for our clients.</p>
+      </div>
+      
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">01</div>
+          <div class="gi-ambient"></div>
+          <img src="https://images.pexels.com/photos/32426327/pexels-photo-32426327.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600" alt="Knotless Braids" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Knotless Braids</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">02</div>
+          <div class="gi-ambient"></div>
+          <img src="https://images.pexels.com/photos/11482130/pexels-photo-11482130.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Bohemian Twists" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Bohemian Twists</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">03</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_hair3.webp" alt="Flawless Glam" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Flawless Glam</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">04</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv.webp" alt="Premium Styling" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Premium Styling</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">05</div>
+          <div class="gi-ambient"></div>
+          <img src="https://images.pexels.com/photos/13735267/pexels-photo-13735267.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600" alt="Golden Touch" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Golden Touch</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">06</div>
+          <div class="gi-ambient"></div>
+          <img src="https://images.pexels.com/photos/5484948/pexels-photo-5484948.png?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Elegant Cornrows" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Elegant Cornrows</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">07</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv1.jfif" alt="Luxury Locs" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Luxury Locs</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">08</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv2.jfif" alt="Sleek Finish" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Sleek Finish</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">09</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv3.webp" alt="Bridal Beauty" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Bridal Beauty</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">10</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv4.webp" alt="Protective Styling" />  
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Protective Styling</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">11</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv5.webp" alt="Classic Weave" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Classic Weave</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>  
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">12</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv6.webp" alt="Stitch Braids" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Stitch Braids</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">13</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv7.webp" alt="Natural Glow" />  
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Natural Glow</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">14</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv8.jfif" alt="Custom Color" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Custom Color</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">15</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv9.webp" alt="Silky Straight" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Silky Straight</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>  
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">16</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv10.jfif" alt="Goddess Braids" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Goddess Braids</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">17</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv11.jfif" alt="Volume & Bounce" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Volume & Bounce</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>  
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">18</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv12.webp" alt="Perfectly Laid" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Perfectly Laid</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">19</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv13.webp" alt="Queen's Crown" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Queen's Crown</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">20</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv14.webp" alt="Signature Braids" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Signature Braids</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">21</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv15.jfif" alt="Flawless Glam" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Flawless Glam</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">22</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv16.webp" alt="Elegant Cornrows" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Elegant Cornrows</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">23</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hairserv17.jfif" alt="Golden Touch" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Golden Touch</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">24</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_hair1.jfif" alt="Protective Styling" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Protective Styling</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">25</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_hair2.jfif" alt="Luxury Locs" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Luxury Locs</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">26</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_hair5.jfif" alt="Stitch Braids" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Stitch Braids</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">27</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_hair6.webp" alt="Bridal Beauty" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Bridal Beauty</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 290px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">28</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl10.jfif" alt="Bohemian Twists" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Bohemian Twists</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">29</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl11.jfif" alt="Classic Weave" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Classic Weave</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">30</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl12.jfif" alt="Custom Color" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Custom Color</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">31</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl13.jfif" alt="Natural Glow" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Natural Glow</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">32</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl14.webp" alt="Premium Styling" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Premium Styling</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">33</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl15.jfif" alt="Sleek Finish" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Sleek Finish</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">34</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl16.webp" alt="Silky Straight" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Silky Straight</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">35</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl17.webp" alt="Goddess Braids" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Goddess Braids</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">36</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl18.webp" alt="Volume & Bounce" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Volume & Bounce</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">37</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl19.webp" alt="Perfectly Laid" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Perfectly Laid</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">38</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl20.jfif" alt="Queen's Crown" />  
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Queen's Crown</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">39</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl21.webp" alt="Signature Braids" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Signature Braids</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">40</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl22.webp" alt="Flawless Glam" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Flawless Glam</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">41</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl23.webp" alt="Golden Touch" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Golden Touch</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">42</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl24.webp" alt="Luxury Locs" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Luxury Locs</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">43</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl25.webp" alt="Stitch Braids" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Stitch Braids</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">44</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl26.jfif" alt="Elegant Cornrows" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Elegant Cornrows</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">45</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl27.webp" alt="Protective Styling" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Protective Styling</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">46</div>
+          <div class="gi-ambient"></div>
+          <img src="images/fine_girl28.jfif" alt="Natural Glow" />  
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Natural Glow</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+        <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">47</div>
+          <div class="gi-ambient"></div>
+          <img src="images/Curly.jfif" alt="Curly Elegance" />
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Curly Elegance</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+          </div>
+          <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">48</div>
+          <div class="gi-ambient"></div>
+          <img src="images/Short_Elegant_Hair.jfif" alt="Short Elegant"/>
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Short Elegance</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+            </div>
+            </div>
+            <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">49</div>
+          <div class="gi-ambient"></div>
+          <img src="images/Sew-In_Hair.jfif" alt="Sew Elegant"/>
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Layered Honey Blonde Bob</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+            </div>
+            </div>
+            <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">50</div>
+          <div class="gi-ambient"></div>
+          <img src="images/hair40.jfif" alt="Long Curly"/>
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Long Curly Glam</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>    
+          </div>
+          </div>
+          <div class="gallery-item" style="height: 280px;">
+          <div class="gi-glow-top"></div>
+          <div class="gi-index">51</div>
+          <div class="gi-ambient"></div>
+          <img src="images/layered_body_wave.jfif" alt="Layered Wave"/>
+          <div class="gallery-caption">
+            <span class="gallery-caption-title">Layered Body Wave</span>
+            <span class="gallery-caption-icon"><i data-lucide="sparkle"></i></span>
+          </div>
+        </div>
+      </div>
+      
+    </div> 
+  </section>
+
+</div> 
+
+<!-- ══════════════════════════════ ABOUT VIEW ══════════════════════════════ -->
+<div class="page-view" id="view-about">
+
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-image-wrap reveal">
+        <div class="about-image">
+          <img src="images/Estygolden.png" alt="Salon stylist" />
+        </div>
+        <div class="about-badge-bottom">
+          <div class="years golden-text">8+ Years</div>
+          <div class="years-sub">of Golden Excellence</div>
+        </div>
+        <div class="about-badge-top">
+          <div class="badge-icon"><i data-lucide="crown"></i></div>
+          <div class="badge-title">Premium</div>
+          <div class="badge-sub">Quality</div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="section-tag">About EstyGolden</div>
+        <h2 class="about-title">Where Beauty Meets <span class="golden-text">Artistry</span></h2>
+        <p class="about-text">EstyGolden Salon was born from a passion to celebrate every woman's natural beauty. We specialize in all forms of female hair braiding, styling, professional makeup artistry, and luxury nail care all under one elegant roof.</p>
+        <p class="about-text" style="margin-bottom:2rem">Our team of certified beauty professionals brings years of experience and genuine love for the craft. We believe every woman deserves to leave our salon feeling like the royalty she truly is.</p>
+         <p class="about-text" style="margin-bottom:2rem">- CEO Mrs Esther Inalegu</p>
+        <div class="golden-divider" style="margin-bottom:1.5rem"></div>
+        <div class="about-features">
+          <div class="about-feature"><span><i data-lucide="gem"></i></span><span>Premium Products Only</span></div>
+          <div class="about-feature"><span><i data-lucide="leaf"></i></span><span>Hair-Safe Techniques</span></div>
+          <div class="about-feature"><span><i data-lucide="alarm-clock"></i></span><span>Flexible Appointments</span></div>
+          <div class="about-feature"><span><i data-lucide="handshake"></i></span><span>Personalized Service</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonials ── -->
+  <section id="testimonials" class="bg-section">
+    <div style="max-width:1152px;margin:0 auto;padding:0 1.5rem;">
+      <div class="section-header reveal">
+        <div class="section-tag">Testimonials</div>
+        <h2 class="section-title">What Our <span class="golden-text">Queens</span> Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">"EstyGolden is hands down the best salon I've ever visited. My knotless braids lasted 3 months and looked absolutely perfect from day one!"</p>
+          <div class="golden-divider" style="margin-bottom:1rem"></div>
+          <div class="testimonial-name">Loveth O.</div>
+          <div class="testimonial-role">Loyal Client · 1 yrs</div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:0.1s">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">"They did my makeup and hair for my school. all my mates was asking who did my look. I felt like royalty truly golden service!"</p>
+          <div class="golden-divider" style="margin-bottom:1rem"></div>
+          <div class="testimonial-name">Catherine</div>
+          <div class="testimonial-role">Client</div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:0.2s">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">"The Home Service nail art I got was stunning. The CEO is so talented and the salon atmosphere is so elegant and welcoming. 10/10 every time, not only for female but also for males."</p>
+          <div class="golden-divider" style="margin-bottom:1rem"></div>
+          <div class="testimonial-name">Ogunlana A.</div>
+          <div class="testimonial-role">Client</div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:0.3s">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">"Came in for School weaving and left feeling like a queen. The attention to detail is unmatched. Will 100% be coming back!"</p>
+          <div class="golden-divider" style="margin-bottom:1rem"></div>
+          <div class="testimonial-name">Rosemary</div>
+          <div class="testimonial-role">Walk-in Client</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══════════════════════════════ BOOKING VIEW ══════════════════════════════ -->
+<div class="page-view" id="view-booking">
+  <section id="booking">
+    <div class="booking-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">Book an Appointment</div>
+        <h2 class="section-title">Reserve Your <span class="golden-text">Golden</span> Seat</h2>
+        <p class="section-sub">Fill in the form below and our team will confirm your appointment via email within 2 hours.</p>
+      </div>
+      
+      <div class="booking-card reveal">
+        
+        <!-- Booking Form -->
+        <form id="booking-form" autocomplete="on">
+          <!-- INSERT before line 2281 — Prototype returning-client login -->
+<div id="client-login-panel" style="display:none; margin-bottom:1rem; padding:1rem 1.25rem; background:rgba(255,210,194,0.07); border:1px solid rgba(255,210,194,0.2); border-radius:14px;">
+  <p style="color:#FFD2C2; font-size:0.85rem; margin-bottom:0.75rem; font-weight:600;">
+    <i data-lucide="crown"></i> Returning client? Enter your phone to be recognised
+  </p>
+  <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+    <input id="login-phone" type="tel" placeholder="Your phone number"
+      style="flex:1; padding:10px 14px; border-radius:10px; border:1px solid rgba(255,210,194,0.3);
+             background:rgba(255,255,255,0.05); color:#FFF8F4; font-family:'Inter',sans-serif; font-size:0.9rem;" />
+    <button type="button" id="login-btn"
+      style="padding:10px 20px; border-radius:10px; background:linear-gradient(135deg,#FFD2C2,#E8A98F);
+             color:#4A6361; font-weight:700; border:none; cursor:pointer; font-size:0.85rem;">
+      Recognise Me
+    </button>
+  </div>
+  <p id="login-feedback" style="font-size:0.78rem; margin-top:0.5rem; color:rgba(255,248,244,0.6);"></p>
+</div>
+          <!-- Banner for Returning Clients (Injected via JS if exists) -->
+          <div id="returning-client-banner" class="returning-client-banner" style="display:none; margin-bottom: 5px;"></div>
+
+          <!-- Step Indicator -->
+          <div class="booking-steps">
+            <div class="booking-step step-active" data-step="1"><div class="step-num">1</div><span>Your Info</span></div>
+            <div class="step-connector" id="connector-1"></div>
+            <div class="booking-step" data-step="2"><div class="step-num">2</div><span>Service</span></div>
+            <div class="step-connector" id="connector-2"></div>
+            <div class="booking-step" data-step="3"><div class="step-num">3</div><span>Schedule</span></div>
+          </div>
+
+          <!-- Service Category Filter -->
+          <div class="svc-cats" id="svc-cats">
+            <button type="button" class="svc-cat active" data-cat="all"><i data-lucide="sparkles"></i> All Services</button>
+            <button type="button" class="svc-cat" data-cat="Hair Braiding"><i data-lucide="scissors"></i> Braiding</button>
+            <button type="button" class="svc-cat" data-cat="Hair Making"><i data-lucide="wind"></i> Hair Making</button>
+            <button type="button" class="svc-cat" data-cat="Makeup"><i data-lucide="smile"></i> Makeup</button>
+            <button type="button" class="svc-cat" data-cat="Nails"><i data-lucide="gem"></i> Nails</button>
+          </div>
+
+          <div class="booking-grid">
+            <div class="booking-field">
+              <input class="booking-input" id="name" name="name" required type="text" placeholder=" " autocomplete="name" />
+              <label class="booking-label" for="name">Full Name *</label>
+            </div>
+            <div class="booking-field">
+              <input class="booking-input" id="phone" name="phone" required type="tel" placeholder=" " autocomplete="tel" />
+              <label class="booking-label" for="phone">Phone Number *</label>
+            </div>
+            <div class="booking-field">
+              <input class="booking-input" id="email" name="email" type="email" placeholder=" " autocomplete="email" />
+              <label class="booking-label" for="email">Email Address</label>
+            </div>
+            <div class="booking-field">
+              <select class="booking-input" id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="Other">Other (Please specify)</option>
+                <optgroup label="Hair Braiding" data-cat="Hair Braiding">
+                  <option>Knotless Braids</option>
+                  <option>Box Braids</option>
+                  <option>Cornrows</option>
+                  <option>Ghana Weaving</option>
+                  <option>Bohemian Braids</option>
+                </optgroup>
+                <optgroup label="Hair Making" data-cat="Hair Making">
+                  <option>Wig Installation</option>
+                  <option>Sew-In Weave</option>
+                  <option>Silk Press</option>
+                  <option>Natural Hair Styling</option>
+                </optgroup>
+                <optgroup label="Makeup" data-cat="Makeup">
+                  <option>Event Makeup</option>
+                  <option>Bridal Makeup</option>
+                  <option>Photoshoot Makeup</option>
+                </optgroup>
+                <optgroup label="Nails" data-cat="Nails">
+                  <option>Acrylic Nails</option>
+                  <option>Gel Manicure</option>
+                  <option>Spa Pedicure</option>
+                </optgroup>
+              </select>
+              <label class="booking-label" for="service">Service *</label>
+            </div>
+<div class="booking-field booking-full" id="other-style-field" style="display:none;">
+  <input class="booking-input" id="other-style" name="other_style" type="text" placeholder=" " />
+  <label class="booking-label" for="other-style">Describe your style / request *</label>
+</div>
+            <div class="booking-field">
+              <input class="booking-input" id="date" name="date" required type="date" />
+              <label class="booking-label" for="date">Preferred Date *</label>
+            </div>
+            <div class="booking-field">
+              <select class="booking-input" id="time" name="time" required>
+                <option value="">Select time</option>
+                <option>8:00 AM</option><option>10:00 AM</option><option>12:00 PM</option><option>2:00 PM</option><option>4:00 PM</option>
+              </select>
+              <label class="booking-label" for="time">Preferred Time *</label>
+            </div>
+            <div class="booking-field booking-full">
+              <textarea class="booking-input" id="notes" name="notes" rows="3" placeholder=" " style="resize:vertical;font-family:'Inter',sans-serif;"></textarea>
+              <label class="booking-label" for="notes">Special Requests / Notes</label>
+            </div>
+          </div>
+          <div class="booking-footer">
+            <button type="submit" class="btn-primary" id="submit-btn" style="font-size:1rem;padding:16px 3rem;">
+              <i data-lucide="sparkle"></i>
+              <span class="btn-text">Confirm My Booking</span>
+            </button>
+            <p class="booking-note">We'll confirm within 2 hrs · No deposit required</p>
+          </div>
+        </form>
+
+        <!-- Success Screen -->
+        <div id="booking-success" class="success-msg">
+          <div class="success-particles" id="success-particles"></div>
+          <div class="success-icon-ring"><i data-lucide="check"></i></div>
+          <h3 class="success-title golden-text" id="success-title">Booking Requested!</h3>
+          <p class="success-sub" id="success-sub">Thank you! We'll reach out to confirm your appointment within 2 hours.</p>
+          <div class="success-summary" id="success-summary">
+            <div class="success-summary-row"><i data-lucide="user"></i> <span><strong id="s-name">—</strong></span></div>
+            <div class="success-summary-row"><i data-lucide="scissors"></i> <span id="s-service">—</span></div>
+            <div class="success-summary-row"><i data-lucide="calendar"></i> <span id="s-date">—</span> &nbsp;·&nbsp; <span id="s-time">—</span></div>
+          </div>
+        </div>
+
+        <div id="booking-error" class="booking-error">
+          <i data-lucide="alert-triangle"></i>
+          <div class="booking-error-text">
+            <strong>Hmm, we couldn't send that automatically.</strong><br>
+            Please reach us directly and we'll lock in your appointment right away.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+<!-- ══════════════════════════════ CONTACT VIEW ══════════════════════════════ -->
+<div class="page-view" id="view-contact">
+
+  <section id="contact" class="bg-section">
+    <div style="max-width:1152px;margin:0 auto;padding:0 1.5rem;">
+      <div class="section-header reveal">
+        <div class="section-tag">Find Us</div>
+        <h2 class="section-title">Visit <span class="golden-text">EstyGolden</span></h2>
+      </div>
+      <div class="contact-grid contact-grid-4" style="max-width:1152px;margin:0 auto;display:grid;gap:1.75rem;">
+        <!-- Location -->
+        <div class="contact-card reveal">
+          <div class="contact-icon-wrap">
+            <div class="contact-icon-ring"></div>
+            <div class="contact-icon-inner"><i data-lucide="map-pin"></i></div>
+          </div>
+          <div class="contact-title">Our Location</div>
+          <div class="golden-divider" style="margin-bottom:1rem"></div>
+          <p class="contact-line">EstyGolden Salon</p>
+          <p class="contact-line copy-line" data-copy="JUTH Gate 4, Lamingo, Jos, Nigeria" title="Click to copy">JUTH Gate 4, Lamingo <span class="copy-badge">copy</span></p>
+          <p class="contact-line">Jos, Plateau State · Nigeria</p>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="contact-card reveal" style="transition-delay:0.12s">
+          <div class="contact-icon-wrap">
+            <div class="contact-icon-ring"></div>
+            <div class="contact-icon-inner"><i data-lucide="phone"></i></div>
+          </div>
+          <div class="contact-title">Contact Us</div>
+          <div class="golden-divider" style="margin-bottom:1rem"></div>
+          <p class="contact-line copy-line" data-copy="+2348164234685" title="Click to copy">+234 8164 234 685 <span class="copy-badge">copy</span></p>
+          <p class="contact-line copy-line" data-copy="+2348175761624" title="Click to copy">+234 8175 761 624 <span class="copy-badge">copy</span></p>
+          <p class="contact-line copy-line" data-copy="esgoldensalon@gmail.com" title="Click to copy">esgoldensalon@gmail.com <span class="copy-badge">copy</span></p>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="contact-card reveal" style="transition-delay:0.24s">
+          <div class="contact-icon-wrap">
+            <div class="contact-icon-ring"></div>
+            <div class="contact-icon-inner"><i data-lucide="clock"></i></div>
+          </div>
+          <div class="contact-title">Opening Hours</div>
+          <div class="golden-divider" style="margin-bottom:1rem"></div>
+          <p class="contact-line">Mon – Fri &nbsp;·&nbsp; 8am – 7pm</p>
+          <p class="contact-line">Saturday &nbsp;·&nbsp; 8am – 8pm</p>
+          <p class="contact-line">Sunday &nbsp;·&nbsp; Closed</p>
+        </div>
+
+        <!-- WhatsApp CTA Card -->
+        <a href="https://wa.me/2348164234685?text=Hi%20EstyGolden!%20I%27d%20like%20to%20book%20an%20appointment." class="contact-card contact-card-wa reveal" style="transition-delay:0.36s" target="_blank" rel="noopener">
+          <div class="contact-icon-wrap">
+            <div class="contact-icon-ring"></div>
+            <div class="contact-icon-inner">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+          </div>
+          <div class="contact-title">WhatsApp Us</div>
+          <div class="golden-divider" style="margin-bottom:1rem"></div>
+          <p class="contact-line">Chat with us instantly</p>
+          <p class="contact-line">Quick replies · Easy booking</p>
+          <p class="contact-line" style="color:#25D366;font-weight:600;margin-top:0.5rem;">Tap to open chat →</p>
+        </a>
+      </div>
+
+      <!-- Map Row -->
+      <div class="map-row reveal" style="padding: 0 1.5rem; max-width: calc(1152px + 3rem); margin: 2rem auto 0; border-radius:20px; overflow:hidden; height:230px; position:relative;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.7!2d8.8895!3d9.9076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104ddd9f5f8c5491%3A0x9e79e45d7c7dce55!2sJos%20University%20Teaching%20Hospital!5e0!3m2!1sen!2sng!4v1712000000000!5m2!1sen!2sng"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="EstyGolden Salon · JUTH Gate 4 Jos, Nigeria"
+          style="width:100%;height:100%;border:none;filter:saturate(0.4) brightness(0.6) hue-rotate(130deg);">
+        </iframe>
+        <div class="map-overlay">
+          <i data-lucide="map-pin"></i>
+          <span class="map-overlay-text">EstyGolden Salon · JUTH Gate 4, Lamingo, Jos, Nigeria</span>
+          <a class="map-overlay-link" href="https://www.google.com/maps/search/JUTH+Gate+4+Lamingo+Jos+Nigeria" target="_blank" rel="noopener">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="social-row reveal">
+        <p class="social-label">Follow Our Journey</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/goldenayanfe?igsh=MWpvbDZzd3k5dHV6eA==" class="social-link social-link-ig" target="_blank" rel="noopener"><i data-lucide="instagram"></i> Instagram</a>
+          <a href="https://www.facebook.com/esther.ochola.73" class="social-link social-link-fb" target="_blank" rel="noopener"><i data-lucide="facebook"></i> Facebook</a>
+          <a href="https://wa.me/2348164234685" class="social-link social-link-wa" target="_blank" rel="noopener"><i data-lucide="message-circle"></i> WhatsApp</a>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <!-- Changed text to animated flowing hair icon -->
+          <div class="logo-circle">
+            <svg class="animated-hair" viewBox="0 0 24 24" width="20" height="20" stroke="#4A6361" stroke-width="1.8" fill="none" stroke-linecap="round">
+              <path class="strand" style="animation-delay: 0s" d="M8,3 C4,8 10,15 8,21" />
+              <path class="strand" style="animation-delay: 0.3s" d="M12,3 C8,8 14,15 12,21" />
+              <path class="strand" style="animation-delay: 0.6s" d="M16,3 C12,8 18,15 16,21" />
+            </svg>
+          </div>
+          <div>
+            <span class="footer-brand golden-text">EstyGolden Salon</span>
+            <span class="footer-brand-sub">Beauty &amp; Excellence</span>
+          </div>
+        </div>
+        <p class="footer-desc">Your premier destination for all things beauty. Hair braiding, makeup and nails we do it all with golden precision.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a data-view="services">→ Services</a></li>
+          <li><a data-view="gallery">→ Gallery</a></li>
+          <li><a data-view="about">→ About</a></li>
+          <li><a data-view="booking">→ Booking</a></li>
+          <li><a data-view="contact">→ Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <span class="footer-service"><i data-lucide="sparkle"></i> Hair Braiding</span>
+          <span class="footer-service"><i data-lucide="sparkle"></i> Hair Making</span>
+          <span class="footer-service"><i data-lucide="sparkle"></i> Bridal Makeup</span>
+          <span class="footer-service"><i data-lucide="sparkle"></i> Event Makeup</span>
+          <span class="footer-service"><i data-lucide="sparkle"></i> Gel Manicure</span>
+          <span class="footer-service"><i data-lucide="sparkle"></i> Nail Art</span>
+          <span class="footer-service"><i data-lucide="sparkle"></i> Acrylic Nails</span>
+        </div>
+      </div>
+    </div>
+    <div class="golden-divider" style="margin-bottom:1.5rem"></div>
+    <div class="footer-bottom">
+      <p class="footer-copy" id="footer-year">© 2026 EstyGolden Salon. All rights reserved.</p>
+      <p class="footer-love">Crafted with <i data-lucide="heart"></i> for every golden queen</p>
+       <p class="footer-love">Developed by <i data-lucide="code"></i>BLUEWAVE</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── Toast Notifications ── -->
+<div id="toast-container"></div>
+
+<!-- ── Customer Care Bot Float ── -->
+<div id="chatbot-wrapper">
+  <button id="chatbot-toggle" aria-label="Open Customer Care">
+    <i data-lucide="message-square"></i>
+  </button>
+  
+  <div id="chatbot-window">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar"><i data-lucide="bot" style="width:18px;height:18px;"></i></div>
+        <div>
+          <div class="chat-title">Esty Care Bot</div>
+          <div class="chat-status">Online</div>
+        </div>
+      </div>
+      <button class="chat-close-btn" id="chatbot-close"><i data-lucide="x" style="width:20px;height:20px;"></i></button>
+    </div>
+    
+    <div class="chat-body" id="chat-body">
+      <div class="chat-msg bot">Hi there! This is the EstyGolden customer service. How can I help you feel golden today?</div>
+    </div>
+    
+    <div class="chat-options-container">
+      <div class="chat-options-title">Most asked Questions</div>
+      <div class="chat-options" id="chat-options">
+        <!-- Options injected by JS -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── Scroll To Top ── -->
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Scroll to top">
+  <i data-lucide="arrow-up"></i>
+</button>
+
+<script>
+  const LS_KEY = 'estygolden_booking';
+let bookingData = {};
+try { bookingData = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) {}
+
+const isReturning = bookingData.hasBooked === true;
+
+// Show login panel only to users with NO local record yet
+const loginPanel = document.getElementById('client-login-panel');
+if (loginPanel) {
+  loginPanel.style.display = isReturning ? 'none' : 'block';
+  lucide.createIcons({ nodes: [loginPanel] });
+}
+
+// Returning banner (existing logic)
+if (isReturning) {
+  const banner = document.getElementById('returning-client-banner');
+  if (banner) {
+    const name = bookingData.clientName ? bookingData.clientName.split(' ')[0] : 'Queen';
+    banner.innerHTML = `<i data-lucide="crown"></i> Welcome back, ${name}!( #${bookingData.bookingCount || '?'})`;
+    banner.style.display = 'flex';
+    lucide.createIcons({ nodes: [banner] });
+  }
+}
+
+// Login button handler
+const loginBtn = document.getElementById('login-btn');
+const loginPhone = document.getElementById('login-phone');
+const loginFeedback = document.getElementById('login-feedback');
+if (loginBtn) {
+  loginBtn.addEventListener('click', () => {
+    const phone = (loginPhone?.value || '').trim();
+    if (!phone) { loginFeedback.textContent = 'Please enter your phone number.'; return; }
+
+    // Check if phone matches stored record (prototype — compares against saved phone)
+    if (bookingData.clientPhone && bookingData.clientPhone === phone) {
+      // Recognised — restore their session
+      loginFeedback.textContent = `✓ Welcome back, ${bookingData.clientName?.split(' ')[0] || 'Queen'}!`;
+      loginFeedback.style.color = '#FFD2C2';
+      setTimeout(() => {
+        loginPanel.style.display = 'none';
+        const banner = document.getElementById('returning-client-banner');
+        if (banner) {
+          const name = bookingData.clientName?.split(' ')[0] || 'Queen';
+          banner.innerHTML = `<i data-lucide="crown"></i>   Welcome back, ${name}! Ready for your next glow up?   (Books #${bookCount})`;
+          banner.style.display = 'flex';
+          lucide.createIcons({ nodes: [banner] });
+        }
+        // Pre-fill name field
+        const nameField = document.getElementById('name');
+        if (nameField && bookingData.clientName) nameField.value = bookingData.clientName;
+      }, 800);
+    } else {
+      loginFeedback.textContent = "We don't have a record for that number yet — fill the form below to book!";
+    }
+  });
+}
+  // Show custom style field when "Other" is selected
+const serviceEl = document.getElementById('service');
+const otherField = document.getElementById('other-style-field');
+const otherInput = document.getElementById('other-style');
+if (serviceEl && otherField) {
+  serviceEl.addEventListener('change', () => {
+    const isOther = serviceEl.value === 'Other';
+    otherField.style.display = isOther ? '' : 'none';
+    if (otherInput) otherInput.required = isOther;
+    if (!isOther && otherInput) otherInput.value = '';
+  });
+}
+  const chatToggle = document.getElementById('chatbot-toggle');
+  const chatWindow = document.getElementById('chatbot-window');
+  const chatClose = document.getElementById('chatbot-close');
+  const chatBody = document.getElementById('chat-body');
+  const chatOptionsContainer = document.getElementById('chat-options');
+
+  const faqs = [
+    { q: "What are your opening hours?", a: "We're open Monday-Friday (8am-7pm), Saturday (8am-8pm)." },
+{ q: "Where are you located?", a: "You can find us at JUTH Gate 4, Lamingo, Jos, Plateau State, Nigeria." },
+{ q: "Do I need to pay a deposit?", a: "No deposit is required to book an appointment with us. Just book online and we'll see you there, then the price will be negotiated physically!" },
+{ q: "How much are the wigs?", a: "Our wigs are priced from ₦5,000 and above, depending on the style and quality. Please inquire for more details." },
+{ q: "Do you accept walk-ins?", a: "Yes, we accept walk-ins! However, we highly recommend booking in advance to secure your preferred time slot." },
+
+// Additional FAQs
+{ q: "What services do you offer?", a: "We offer hair styling, wig installation, wig sales, braiding, hair treatment, coloring, and other beauty services." },
+{ q: "How can I book an appointment?", a: "You can book an appointment through our website, by phone, or by visiting our salon." },
+{ q: "How long will my appointment take?", a: "The duration depends on the service. Most appointments take between 30 minutes and 4 hours." },
+{ q: "Do you sell wigs?", a: "Yes, we sell a variety of wigs in different styles, lengths, and colors." },
+{ q: "Can I bring my own wig?", a: "Absolutely! We can install, style, and customize wigs brought by customers." },
+{ q: "Do you offer hair coloring services?", a: "Yes, we offer professional hair coloring and treatment services." },
+{ q: "What payment methods do you accept?", a: "We accept cash, bank transfers, and other available payment options at the salon." },
+{ q: "Can I cancel or reschedule my appointment?", a: "Yes, appointments can be canceled or rescheduled. Please notify us as early as possible." },
+{ q: "Do you style children's hair?", a: "Yes, we provide hair styling services for both children and adults." },
+{ q: "Do you offer bridal or special event styling?", a: "Yes, we provide bridal, birthday, graduation, and other special event hair styling services." },
+{ q: "Do you offer home service?", a: "Yes, home service may be available depending on your location. Please contact us for availability and pricing." },
+{ q: "How often should I maintain my wig?", a: "We recommend maintenance every 2–4 weeks, depending on usage and the type of wig." },
+{ q: "Do you provide hair treatment services?", a: "Yes, we offer various hair treatments to keep your hair healthy, strong, and beautiful." },
+{ q: "What should I do before my appointment?", a: "Please arrive on time and, if possible, come with clean hair unless your booked service requires otherwise." },
+{ q: "Do you offer student discounts or promotions?", a: "We occasionally run special promotions and discounts. Follow our social media pages for updates." },
+{ q: "I can't find my question here. What should I do?", a: "If your question isn't listed here, please feel free to contact us directly by phone, WhatsApp, or through our contact form. We'll be happy to assist you with any inquiries."} 
+];
+
+  let chatOpen = false;
+
+  function toggleChat() {
+    chatOpen = !chatOpen;
+    if (chatOpen) {
+      chatWindow.classList.add('active');
+      chatToggle.innerHTML = '<i data-lucide="chevron-down"></i>';
+    } else {
+      chatWindow.classList.remove('active');
+      chatToggle.innerHTML = '<i data-lucide="message-square"></i>';
+    }
+    lucide.createIcons({ nodes: [chatToggle] });
+  }
+
+  chatToggle.addEventListener('click', toggleChat);
+  chatClose.addEventListener('click', () => { chatOpen = true; toggleChat(); });
+
+  function appendMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `chat-msg ${sender}`;
+    msgDiv.textContent = text;
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function handleOptionClick(faq) {
+    appendMessage(faq.q, 'user');
+    
+    // Simulate typing delay
+    setTimeout(() => {
+      appendMessage(faq.a, 'bot');
+    }, 600);
+  }
+
+  // Populate options
+  faqs.forEach(faq => {
+    const btn = document.createElement('button');
+    btn.className = 'chat-opt-btn';
+    btn.textContent = faq.q;
+    btn.onclick = () => handleOptionClick(faq);
+    chatOptionsContainer.appendChild(btn);
+  });
+
+  // ── Icon initialization ────────────────────────────────────────────────────
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+
+  // ── Scroll Progress Bar ───────────────────────────────────────────────────
+  const scrollBar = document.getElementById('scroll-progress');
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    scrollBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+  // ── Navbar scroll effect ──────────────────────────────────────────────────
+  const navbar = document.getElementById('navbar');
+  const scrollTopBtn = document.getElementById('scroll-top-btn');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 60);
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('stt-visible', y > 400);
+    updateScrollProgress();
+  }, { passive: true });
+
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // ── Toast notification system ─────────────────────────────────────────────
+  function showToast(message, iconName = 'check-circle') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `<i data-lucide="${iconName}"></i> ${message}`;
+    container.appendChild(toast);
+    lucide.createIcons({ nodes: [toast] });
+    setTimeout(() => {
+      toast.classList.add('toast-out');
+      setTimeout(() => toast.remove(), 350);
+    }, 2800);
+  }
+
+  // ── Scroll reveal ─────────────────────────────────────────────────────────
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Booking field stagger entry ───────────────────────────────────────────
+  const fieldObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fields = entry.target.querySelectorAll('.booking-field');
+        fields.forEach((f, i) => {
+          setTimeout(() => f.classList.add('field-visible'), i * 75);
+        });
+        fieldObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.booking-grid').forEach(g => fieldObserver.observe(g));
+
+  // ── Select & date floating label helper ──────────────────────────────────
+  document.querySelectorAll('.booking-field select, .booking-field input[type="date"]').forEach(el => {
+    function syncLabel() {
+      el.dataset.hasValue = el.value ? 'true' : 'false';
+    }
+    el.addEventListener('change', syncLabel);
+    syncLabel();
+  });
+
+  // ── Booking step tracker (visual only) ───────────────────────────────────
+  const nameInput  = document.getElementById('name');
+  const phoneInput = document.getElementById('phone');
+  const svcInput   = document.getElementById('service');
+  const dateInput  = document.getElementById('date');
+  const timeInput  = document.getElementById('time');
+
+  function updateBookingSteps() {
+    const infoFilled = nameInput && nameInput.value && phoneInput && phoneInput.value;
+    const svcFilled  = svcInput  && svcInput.value;
+    const schFilled  = dateInput && dateInput.value && timeInput && timeInput.value;
+
+    const steps = document.querySelectorAll('.booking-step');
+    const conn1 = document.getElementById('connector-1');
+    const conn2 = document.getElementById('connector-2');
+
+    if (!steps.length) return;
+    steps[0].className = 'booking-step ' + (infoFilled ? 'step-done' : 'step-active');
+    steps[1].className = 'booking-step ' + (svcFilled ? 'step-done' : (infoFilled ? 'step-active' : ''));
+    steps[2].className = 'booking-step ' + (schFilled ? 'step-done' : (svcFilled ? 'step-active' : ''));
+    if (conn1) conn1.classList.toggle('line-fill', !!infoFilled);
+    if (conn2) conn2.classList.toggle('line-fill', !!svcFilled);
+  }
+
+  [nameInput, phoneInput, svcInput, dateInput, timeInput].forEach(el => {
+    if (el) el.addEventListener('input', updateBookingSteps);
+    if (el) el.addEventListener('change', updateBookingSteps);
+  });
+
+  // ── Service category filter ───────────────────────────────────────────────
+  document.querySelectorAll('.svc-cat').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.svc-cat').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      const svc = document.getElementById('service');
+      if (!svc) return;
+      const groups = svc.querySelectorAll('optgroup');
+      groups.forEach(g => {
+        g.style.display = (cat === 'all' || g.label === cat) ? '' : 'none';
+      });
+      // Reset selection if current selection is now hidden
+      if (svc.value) {
+        const selectedOpt = svc.querySelector(`option[value="${svc.value}"]`) || svc.querySelector('option:checked');
+        if (selectedOpt && selectedOpt.parentElement.style.display === 'none') {
+          svc.value = '';
+          svc.dataset.hasValue = 'false';
+        }
+      }
+      lucide.createIcons({ nodes: [btn] });
+    });
+  });
+
+  // ── Booking form + email delivery ────────────────────────────────────────
+  /*
+  ════════════════════════════════════════════════════════════
+  ADMIN EMAIL NOTIFICATIONS — already wired up, no signup needed
+  ════════════════════════════════════════════════════════════
+  Every completed booking is sent straight to ADMIN_EMAIL below using
+  FormSubmit (https://formsubmit.co) — a free email-forwarding endpoint
+  that needs no account, API key, or backend.
+
+  ONE-TIME ACTIVATION:
+  The very first time a booking is submitted, FormSubmit sends a
+  confirmation email to ADMIN_EMAIL with an "Activate Form" link.
+  Click that link once and every booking after that will land
+  directly in the inbox automatically.
+
+  To change the recipient, just edit ADMIN_EMAIL below.
+  ════════════════════════════════════════════════════════════
+  */
+  const ADMIN_EMAIL  = 'esgoldsalon@gmail.com';
+  const FORM_ENDPOINT = `https://formsubmit.co/ajax/${ADMIN_EMAIL}`;
+
+  const bookingForm    = document.getElementById('booking-form');
+  const bookingSuccess = document.getElementById('booking-success');
+  const bookingError   = document.getElementById('booking-error');
+
+  if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const btnText = btn ? btn.querySelector('.btn-text') : null;
+      if (btn) btn.classList.add('loading');
+      if (btnText) btnText.textContent = 'Sending...';
+      if (bookingError) bookingError.style.display = 'none';
+
+      const formData = {
+        client_name:  nameInput  ? nameInput.value  : '',
+        client_phone: phoneInput ? phoneInput.value : '',
+        client_email: document.getElementById('email') ? document.getElementById('email').value : '',
+        service:      svcInput   ? svcInput.value   : '',
+        date:         dateInput  ? dateInput.value  : '',
+        time:         timeInput  ? timeInput.value  : '',
+        notes:        document.getElementById('notes') ? document.getElementById('notes').value : '',
+      };
+
+      // Populate success summary
+      const sName = document.getElementById('s-name');
+      const sSvc  = document.getElementById('s-service');
+      const sDate = document.getElementById('s-date');
+      const sTime = document.getElementById('s-time');
+      const sPhone = document.getElementById('s-phone');
+      if (sName)  sName.textContent  = formData.client_name  || '—';
+      if (sSvc)   sSvc.textContent   = formData.service      || '—';
+      if (sDate)  sDate.textContent  = formData.date         || '—';
+      if (sTime)  sTime.textContent  = formData.time         || '—';
+      if (sPhone) sPhone.textContent = formData.client_phone || '—';
+
+      // Send the booking straight to the salon's inbox
+      let emailSent = false;
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: `New Booking — ${formData.client_name || 'Website Visitor'} (${formData.service || 'Service TBC'})`,
+            _template: 'table',
+            _captcha: 'false',
+            'Client Name':  formData.client_name,
+            'Phone':        formData.client_phone,
+            'Email':        formData.client_email,
+            'Service':      formData.service,
+            'Date':         formData.date,
+            'Time':         formData.time,
+            'Notes':        formData.notes,
+            _replyto:       formData.client_email || undefined,
+          }),
+        });
+        emailSent = res.ok;
+      } catch (err) {
+        console.warn('Booking email send failed:', err);
+      }
+
+      if (btn) btn.classList.remove('loading');
+      if (btnText) btnText.textContent = 'Confirm My Booking';
+
+      if (emailSent) {
+        // ── LocalStorage: track returning bookers ─────────────────────────
+     const bookCount = (bookingData.bookingCount || 0) + 1;  
+localStorage.setItem(LS_KEY, JSON.stringify({
+  hasBooked:    true,
+  clientName:   formData.client_name || '',
+  clientPhone:  formData.client_phone || '',       // ← ADD THIS LINE
+  bookingCount: bookCount,
+  lastBooked:   new Date().toISOString(),
+}));
+        // Personalise the success panel
+        const successTitle = document.getElementById('success-title');
+        const successSub   = document.getElementById('success-sub');
+        const returningBadge = document.getElementById('returning-badge');
+
+        if (isReturning && successTitle) {
+          successTitle.textContent = 'Book Again? Done! ✨';
+          successTitle.classList.add('returning-client');
+          if (returningBadge) {
+            const firstName = (bookingData.clientName || formData.client_name || '').split(' ')[0];
+            returningBadge.innerHTML = `<i data-lucide="crown"></i> Welcome Back${firstName ? ', ' + firstName : ''}! (Visit #${bookCount})`;
+            returningBadge.style.display = 'inline-flex';
+            lucide.createIcons({ nodes: [returningBadge] });
+          }
+          if (successSub) successSub.textContent = "So great to have you back! We'll confirm your next appointment shortly.";
+        } else {
+          if (successTitle) successTitle.textContent = 'Booking Requested! ✨';
+          if (returningBadge) returningBadge.style.display = 'none';
+          if (successSub) successSub.textContent = "Thank you! We'll reach out to confirm your appointment within 2 hours.";
+        }
+
+        // Show success
+        bookingForm.style.display    = 'none';
+        bookingSuccess.style.display = 'block';
+        lucide.createIcons({ nodes: [bookingSuccess] });
+        launchConfetti();
+
+        setTimeout(() => {
+          bookingSuccess.style.display = 'none';
+          bookingForm.style.display    = 'block';
+          bookingForm.reset();
+          document.querySelectorAll('.booking-field select, .booking-field input[type="date"]')
+            .forEach(el => el.dataset.hasValue = 'false');
+          updateBookingSteps();
+        }, 8000);
+      } else if (bookingError) {
+        // Couldn't reach the email service — let the user know and offer a fallback
+        bookingError.style.display = 'flex';
+        lucide.createIcons({ nodes: [bookingError] });
+        showToast('Could not send automatically — try the call/WhatsApp button below', 'alert-triangle');
+      }
+    });
+  }
+
+  // ── Confetti on booking success ──────────────────────────────────────────
+  function launchConfetti() {
+    const container = document.getElementById('success-particles');
+    if (!container) return;
+    container.innerHTML = '';
+    const colors = ['#FFD2C2', '#E8A98F', '#FFE8DC', '#fff', '#FFD2C2'];
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('span');
+      p.className = 's-particle';
+      const size = Math.random() * 7 + 3;
+      p.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random()*100}%;
+        top:${40 + Math.random()*30}%;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-delay:${Math.random()*0.6}s;
+        animation-duration:${1.2 + Math.random()*0.8}s;
+      `;
+      container.appendChild(p);
+    }
+  }
+
+  // ── Contact 3D tilt + spotlight ──────────────────────────────────────────
+  document.querySelectorAll('.contact-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const cx   = rect.left + rect.width  / 2;
+      const cy   = rect.top  + rect.height / 2;
+      const dx   = (e.clientX - cx) / (rect.width  / 2);
+      const dy   = (e.clientY - cy) / (rect.height / 2);
+      card.style.transform = `perspective(600px) rotateY(${dx * 5}deg) rotateX(${-dy * 5}deg) translateY(-4px)`;
+      // Spotlight
+      const mx = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1) + '%';
+      const my = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1) + '%';
+      card.style.setProperty('--mx', mx);
+      card.style.setProperty('--my', my);
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  // ── Copy to clipboard ────────────────────────────────────────────────────
+  document.querySelectorAll('.copy-line').forEach(el => {
+    el.addEventListener('click', () => {
+      const text = el.dataset.copy || el.textContent.replace(/copy/i, '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Copied to clipboard!', 'clipboard-check');
+      }).catch(() => {
+        showToast('Tap & hold to copy', 'info');
+      });
+    });
+  });
+
+  // ── View switching ────────────────────────────────────────────────────────
+  const pageViews = document.querySelectorAll('.page-view');
+  const navLinkEls = document.querySelectorAll('.nav-link');
+
+  function setActiveView(viewName) {
+    pageViews.forEach(v => v.classList.toggle('active', v.id === `view-${viewName}`));
+    navLinkEls.forEach(l => l.classList.toggle('active', l.dataset.view === viewName));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelectorAll(`#view-${viewName} .reveal`).forEach(el => {
+      el.classList.remove('visible');
+      observer.observe(el);
+    });
+    // Re-stagger booking fields when booking view is opened
+    if (viewName === 'booking') {
+      const grid = document.querySelector('#booking .booking-grid');
+      if (grid) {
+        grid.querySelectorAll('.booking-field').forEach(f => f.classList.remove('field-visible'));
+        setTimeout(() => {
+          grid.querySelectorAll('.booking-field').forEach((f, i) => {
+            setTimeout(() => f.classList.add('field-visible'), i * 80 + 200);
+          });
+        }, 300);
+      }
+    }
+  }
+
+  document.querySelectorAll('[data-view]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      setActiveView(el.dataset.view);
+    });
+  });
+
+  // ── Gallery items: staggered entrance animation ──────────────────────────
+  function initGalleryStagger() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    if (!galleryItems.length) return;
+
+    const galleryObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const item = entry.target;
+          const idx  = parseInt(item.dataset.giIdx || 0);
+          item.style.transitionDelay = `${idx * 60}ms`;
+          item.classList.add('gi-visible');
+          galleryObserver.unobserve(item);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    galleryItems.forEach((item, i) => {
+      item.dataset.giIdx = i;
+      galleryObserver.observe(item);
+    });
+  }
+  initGalleryStagger();
+
+  // Re-run when gallery view is activated
+  document.querySelectorAll('[data-view="gallery"]').forEach(el => {
+    el.addEventListener('click', () => {
+      setTimeout(initGalleryStagger, 120);
+    });
+  });
+
+  // ── Hero floating particles ───────────────────────────────────────────────
+  (function spawnHeroParticles() {
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+    const colours = ['rgba(255,210,194,0.55)', 'rgba(232,169,143,0.45)', 'rgba(255,255,255,0.3)'];
+    function spawn() {
+      const p = document.createElement('span');
+      p.className = 'hero-particle';
+      const size = Math.random() * 4 + 2;
+      const dur  = Math.random() * 12 + 10;
+      const dx   = (Math.random() - 0.5) * 120;
+      p.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random()*100}%;
+        bottom:${Math.random()*30}%;
+        background:${colours[Math.floor(Math.random()*colours.length)]};
+        animation-duration:${dur}s;
+        --dx:${dx}px;
+        animation-delay:0s;
+        filter: blur(${Math.random() > 0.5 ? 1 : 0}px);
+      `;
+      hero.querySelector('.hero-bg').appendChild(p);
+      p.addEventListener('animationend', () => p.remove());
+    }
+    // Spawn first batch
+    for (let i = 0; i < 8; i++) setTimeout(spawn, i * 500);
+    // Keep spawning
+    setInterval(spawn, 1400);
+  })();
+
+  // ── Footer year ───────────────────────────────────────────────────────────
+  const footerYearEl = document.getElementById('footer-year');
+  if (footerYearEl) footerYearEl.textContent = `© ${new Date().getFullYear()} EstyGolden Salon. All rights reserved.`;
+</script>
+</body>
+</html>
